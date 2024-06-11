@@ -23,6 +23,7 @@ public class User {
 	
 	
 	
+	
 	@ManyToOne
 	@JoinColumn(name ="idRole")
 	private EventReason eventReason;
