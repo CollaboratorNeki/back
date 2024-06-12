@@ -1,0 +1,5 @@
+Tarefa.java: A entidade que representa a tarefa no banco de dados.
+TarefaDTO.java: Um objeto de transferência de dados para transportar informações da tarefa entre o frontend e o backend.
+TarefaRepository.java: O repositório que gerencia a interação com o banco de dados.
+TarefaService.java: O serviço que contém a lógica de negócios para a entidade Tarefa.
+TarefaController.java: O controlador que expõe os endpoints da API para manipular tarefas
