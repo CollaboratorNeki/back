@@ -8,27 +8,24 @@ import jakarta.persistence.Id;
 
 @Entity
 
-public class Client {
+public class EventReason {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idClient;
+	private Long idEventReason;
 
 	@Column(nullable = false)
 	private String nome;
 
 	@Column(nullable = false)
-	private String contato;
+	private String descricao;
 
-	@Column(nullable = false)
-	private String email;
-
-	public Long getIdClient() {
-		return idClient;
+	public Long getIdEventReason() {
+		return idEventReason;
 	}
 
-	public void setIdClient(Long idClient) {
-		this.idClient = idClient;
+	public void setIdEventReason(Long idEventReason) {
+		this.idEventReason = idEventReason;
 	}
 
 	public String getNome() {
@@ -39,20 +36,12 @@ public class Client {
 		this.nome = nome;
 	}
 
-	public String getContato() {
-		return contato;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setContato(String contato) {
-		this.contato = contato;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 }
