@@ -14,7 +14,7 @@
 	<name>collaborator</name>
 	<description>projeto integrador serratec TIC 2024.1</description>
 	<properties>
-		<java.version>21</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
