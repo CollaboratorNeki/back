@@ -6,29 +6,30 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@Entity
+/* Esta classe serve somente para alterar parametros do banco de dados 
+ * sem a necessidade de alterar as entidade diretamente no banco.
+ * 
+*/
 
-public class Client {
+@Entity
+public class Parameter {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idClient;
+	private Long idParameter;
 
 	@Column(nullable = false)
 	private String nome;
 
 	@Column(nullable = false)
-	private String contato;
+	private String valor;
 
-	@Column(nullable = false)
-	private String email;
-
-	public Long getIdClient() {
-		return idClient;
+	public Long getIdParameter() {
+		return idParameter;
 	}
 
-	public void setIdClient(Long idClient) {
-		this.idClient = idClient;
+	public void setIdParameter(Long idParameter) {
+		this.idParameter = idParameter;
 	}
 
 	public String getNome() {
@@ -39,20 +40,12 @@ public class Client {
 		this.nome = nome;
 	}
 
-	public String getContato() {
-		return contato;
+	public String getValor() {
+		return valor;
 	}
 
-	public void setContato(String contato) {
-		this.contato = contato;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setValor(String valor) {
+		this.valor = valor;
 	}
 
 }

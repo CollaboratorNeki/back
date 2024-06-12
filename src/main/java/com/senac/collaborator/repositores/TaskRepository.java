@@ -1,5 +1,11 @@
 package com.senac.collaborator.repositores;
 
-public interface TaskRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.senac.collaborator.model.Task;
+
+@Repository
+public interface TaskRepository extends JpaRepository<Task, Long> {
 
 }
