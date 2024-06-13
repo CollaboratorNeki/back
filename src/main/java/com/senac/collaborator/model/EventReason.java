@@ -20,6 +20,8 @@ public class EventReason {
 	@Column(nullable = false)
 	private String descricao;
 
+	// gets e sets***************************
+
 	public Long getIdEventReason() {
 		return idEventReason;
 	}
