@@ -68,6 +68,7 @@ public class Project {
 	public Project() {
 	}
 
+
 	public Project(long idProject, String nome, String descricao, int dataInicio, int dataFim, boolean statusCustoExtra,
 			int custoEstimado, int custoReal, String esforçoEstimado, String esforçoReal, List<Task> projectTask,
 			List<ExtraCost> idproject2, List<Technology> technology, Client client, ALMTool almtool) {
@@ -83,11 +84,12 @@ public class Project {
 		this.esforçoEstimado = esforçoEstimado;
 		this.esforçoReal = esforçoReal;
 		this.projectTask = projectTask;
-//		idroject = idproject2; // CONFIRMAR  - 
+		idproject = idproject2;
 		this.technology = technology;
 		this.client = client;
 		this.almtool = almtool;
 	}
+
 
 	public long getIdProject() {
 		return idProject;
