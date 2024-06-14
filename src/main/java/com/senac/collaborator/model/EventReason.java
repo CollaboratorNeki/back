@@ -1,38 +1,48 @@
 package com.senac.collaborator.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
-
+@Table(name ="event_reason")
 public class EventReason {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idEventReason;
+	private Long id_event_reason;
 
-	@Column(nullable = false)
+	@Column(name="nome")
 	private String nome;
 
-	@Column(nullable = false)
+	@Column(name="descricao")
 	private String descricao;
-	
-	@Column(name = "status")
-	private Boolean status;
 
-	public Long getIdEventReason() {
-		return idEventReason;
+	@OneToMany
+	(mappedBy ="id_event_reason")
+	private List<User> users;
+
+	public EventReason () {}
+
+	public EventReason(Long id_event_reason, String nome, String descricao) {
+		super();
+		this.id_event_reason = id_event_reason;
+		this.nome = nome;
+		this.descricao = descricao;
 	}
 
-	
-	// gets e sets***************************
-	
-	
-	public void setIdEventReason(Long idEventReason) {
-		this.idEventReason = idEventReason;
+	public Long getId_event_reason() {
+		return id_event_reason;
+	}
+
+	public void setId_event_reason(Long id_event_reason) {
+		this.id_event_reason = id_event_reason;
 	}
 
 	public String getNome() {
@@ -51,10 +61,6 @@ public class EventReason {
 		this.descricao = descricao;
 	}
 
-	public Boolean getStatus() {
-		return status;
-	}
-
-	public void setStatus(Boolean status) {
-		this.status = status;
-	}}
+	
+	
+}
