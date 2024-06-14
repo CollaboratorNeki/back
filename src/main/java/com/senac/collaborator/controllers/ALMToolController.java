@@ -1,4 +1,4 @@
-package com.senac.collaborator.controllers;
+/*package com.senac.collaborator.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -58,5 +58,5 @@ public class ALMToolController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-}
+}*/
 

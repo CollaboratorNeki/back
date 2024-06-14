@@ -9,7 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.OneToMany;
+
 @Entity
 @Table(name = "alm_tool")
 public class ALMTool {

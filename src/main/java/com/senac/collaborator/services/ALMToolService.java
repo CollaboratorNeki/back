@@ -1,4 +1,4 @@
-package com.senac.collaborator.services;
+/*package com.senac.collaborator.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,3 +31,4 @@ public class ALMToolService {
     }
 }
 
+*/
