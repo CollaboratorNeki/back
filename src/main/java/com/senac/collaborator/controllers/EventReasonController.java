@@ -1,4 +1,4 @@
-package com.senac.collaborator.controllers;
+/*package com.senac.collaborator.controllers;
 
 import java.util.List;
 
@@ -44,4 +44,4 @@ public class EventReasonController {
 	public void deleteEventReason(@PathVariable Long id) {
 		eventReasonService.deleteEventReason(id);
 	}
-}
+}*/

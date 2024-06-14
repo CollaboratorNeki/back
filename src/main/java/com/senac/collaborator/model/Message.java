@@ -4,41 +4,48 @@ import java.time.*;
 
 
 @Entity
+@Table(name ="message")
 public class Message {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idMessage;
+	private Long id_message;
 	
-	@Column(nullable = false)
+	@Column(name ="conteudo")
 	private String conteudo;
-	@Column(nullable = false)
-	private LocalDateTime dataEnvio;
 	
-//	confirmar otm
-	@OneToMany
-	@JoinColumn(name = "idRemetente", nullable = false)
-	private User remetente;
+	@Column(name ="data_envio")
+	private LocalDateTime data_envio;
 	
-	
-	
-	@ManyToOne
-	@JoinColumn(name = "idRemetente", nullable = false)
-	private User destinatario;
-	
-	
+
     @ManyToOne
-    @JoinColumn(name = "idTask")
-	private Task task;
+	@JoinColumn(name = "id_remetente")
+	private User id_remetente;
+	
+
+	@ManyToOne
+	@JoinColumn(name = "id_destinatario")
+	private User id_destinatario;
+	
+	
+   @ManyToOne
+    @JoinColumn(name = "id_task")
+	private Task id_task;
 
 
-	public Long getIdMessage() {
-		return idMessage;
+	
+	
+	
+	public Message () {}
+
+
+	public Long getId_message() {
+		return id_message;
 	}
 
 
-	public void setIdMessage(Long idMessage) {
-		this.idMessage = idMessage;
+	public void setId_message(Long id_message) {
+		this.id_message = id_message;
 	}
 
 
@@ -52,44 +59,24 @@ public class Message {
 	}
 
 
-	public LocalDateTime getDataEnvio() {
-		return dataEnvio;
+	public LocalDateTime getData_envio() {
+		return data_envio;
 	}
 
 
-	public void setDataEnvio(LocalDateTime dataEnvio) {
-		this.dataEnvio = dataEnvio;
+	public void setData_envio(LocalDateTime data_envio) {
+		this.data_envio = data_envio;
 	}
 
 
-	public User getRemetente() {
-		return remetente;
+	public Message(Long id_message, String conteudo, LocalDateTime data_envio) {
+		super();
+		this.id_message = id_message;
+		this.conteudo = conteudo;
+		this.data_envio = data_envio;
 	}
-
-
-	public void setRemetente(User remetente) {
-		this.remetente = remetente;
-	}
-
-
-	public User getDestinatario() {
-		return destinatario;
-	}
-
-
-	public void setDestinatario(User destinatario) {
-		this.destinatario = destinatario;
-	}
-
-
-	public Task getTask() {
-		return task;
-	}
-
-
-	public void setTask(Task task) {
-		this.task = task;
-	}
+	
+	
 	
 	
 	

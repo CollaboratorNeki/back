@@ -1,4 +1,4 @@
-package com.senac.collaborator.services;
+/*package com.senac.collaborator.services;
 
 import java.util.List;
 
@@ -39,4 +39,4 @@ public class EventReasonService {
 	public void deleteEventReason(Long id) {
 		eventReasonRepository.deleteById(id);
 	}
-}
+}*/

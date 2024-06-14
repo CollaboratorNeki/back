@@ -16,7 +16,7 @@ public class Role {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="idRole")
+	@Column(name="id_role")
 	private Long idRole;
 	
 	@Column(name ="nome")
@@ -26,73 +26,54 @@ public class Role {
 	private String descricao;
 	
 	@Column(name ="status")
-	private boolean status;
+	private String status;
 	
-	@OneToMany(mappedBy="idRole")
+	@OneToMany(mappedBy="id_user")
 	private List<User> users;
 	
 	
 	public Role () {}
 
-
-	public Role(Long idRole, String nome, String descricao, boolean status, List<User> users) {
+	public Role(Long idRole, String nome, String descricao, String status) {
 		super();
 		this.idRole = idRole;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.status = status;
-		this.users = users;
 	}
-
 
 	public Long getIdRole() {
 		return idRole;
 	}
 
-
 	public void setIdRole(Long idRole) {
 		this.idRole = idRole;
 	}
-
 
 	public String getNome() {
 		return nome;
 	}
 
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
 
 	public String getDescricao() {
 		return descricao;
 	}
 
-
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
 
-
-	public boolean isStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-
-	public void setStatus(boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
-
-	public List<User> getUsers() {
-		return users;
-	}
-
-
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
-
+	
 
 }

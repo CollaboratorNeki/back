@@ -7,26 +7,38 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name ="extra_cost")
 public class ExtraCost {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Long idExtraCost;
+	private Long idExtraCost;
 
-	@Column(nullable = false)
-	String nome;
+	@Column(name="nome")
+	private String nome;
 
-	@Column(nullable = false)
-	String descricao;
+	@Column(name="descricao")
+	private String descricao;
 
-	@Column(nullable = false)
-	Double valor;
+	@Column(name="valor")
+	private Double valor;
 
 	@ManyToOne
-	@JoinColumn(name = "idProject", nullable = false)
+	@JoinColumn(name = "id_project")
 	private Project project;
+
+	public ExtraCost () {}
+
+	public ExtraCost(Long idExtraCost, String nome, String descricao, Double valor) {
+		super();
+		this.idExtraCost = idExtraCost;
+		this.nome = nome;
+		this.descricao = descricao;
+		this.valor = valor;
+	}
 
 	public Long getIdExtraCost() {
 		return idExtraCost;
@@ -59,13 +71,6 @@ public class ExtraCost {
 	public void setValor(Double valor) {
 		this.valor = valor;
 	}
-
-	public Project getProject() {
-		return project;
-	}
-
-	public void setProject(Project project) {
-		this.project = project;
-	}
-
+	
+	
 }

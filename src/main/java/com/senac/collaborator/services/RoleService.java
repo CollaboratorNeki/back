@@ -31,22 +31,12 @@ public class RoleService {
 		roleRepository.deleteById(id);
 	}
 	
-	public List<Role> findActiveRoles() {
-		return roleRepository.findByStatus(true);
+	/*public List<Role> findActiveRoles() {
+		return roleRepository.findByStatus(id);
 	}
-		
+		*/
 
-	   public Role toggleStatus(Long id) {
-	        Optional<Role> optionalRole = roleRepository.findById(id);
-	        
-	        if (optionalRole.isPresent()) {
-	            Role role = optionalRole.get();
-	            role.setStatus(!role.isStatus()); 
-	            return roleRepository.save(role); 
-	        } else {
-	            throw new IllegalArgumentException("Role com ID " + id + " não encontrado.");
-	        }
-	    }
+	 
 		
 	}
 	
