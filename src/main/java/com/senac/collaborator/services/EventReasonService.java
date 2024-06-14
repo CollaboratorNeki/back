@@ -58,4 +58,9 @@ public class EventReasonService {
 	    }
 	    return false;
 	}
+
+    public EventReason getEventReasonById(Long idEventReason) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getEventReasonById'");
+    }
 }
