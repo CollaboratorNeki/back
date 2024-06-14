@@ -18,7 +18,7 @@ import com.senac.collaborator.model.EventReason;
 import com.senac.collaborator.services.EventReasonService;
 
 @RestController
-@RequestMapping("/event-reasons")
+@RequestMapping("/event_reason")
 public class EventReasonController {
     
     @Autowired
@@ -32,8 +32,8 @@ public class EventReasonController {
 
     // Buscar por ID
     @GetMapping("/buscar/{idEventReason}")
-    public ResponseEntity<EventReason> getEventReasonById(@PathVariable Long idEventReason) {
-        EventReason eventReason = eventReasonService.getEventReasonById(idEventReason);
+    public ResponseEntity<EventReason> getEventReasonById(@PathVariable Long id_event_reason) {
+        EventReason eventReason = eventReasonService.getEventReasonById(id_event_reason);
         if (eventReason != null) {
             return new ResponseEntity<>(eventReason, HttpStatus.OK);
         } else {
@@ -54,8 +54,8 @@ public class EventReasonController {
 
     // Atualizar existente
     @PutMapping("/atualizar/{idEventReason}")
-    public ResponseEntity<String> updateEventReason(@PathVariable Long idEventReason, @RequestBody EventReason eventReason) {
-        boolean eventReasonAtualizado = eventReasonService.updateEventReason(idEventReason, eventReason);
+    public ResponseEntity<String> updateEventReason(@PathVariable Long id_event_reason, @RequestBody EventReason eventReason) {
+        boolean eventReasonAtualizado = eventReasonService.updateEventReason(id_event_reason, eventReason);
         if (eventReasonAtualizado) {
             return ResponseEntity.status(HttpStatus.OK).body("Evento atualizado com sucesso!");
         } else {
@@ -65,8 +65,8 @@ public class EventReasonController {
 
     // Deletar por ID
     @DeleteMapping("/deletar/{idEventReason}")
-    public ResponseEntity<String> deleteEventReason(@PathVariable Long idEventReason) {
-        boolean eventReasonDeletado = eventReasonService.deleteEventReason(idEventReason);
+    public ResponseEntity<String> deleteEventReason(@PathVariable Long id_event_reason) {
+        Boolean eventReasonDeletado = eventReasonService.deleteEventReason(id_event_reason);
         if (eventReasonDeletado) {
             return ResponseEntity.status(HttpStatus.OK).body("Evento deletado com sucesso!");
         } else {

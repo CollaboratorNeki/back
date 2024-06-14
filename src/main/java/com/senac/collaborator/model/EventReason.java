@@ -33,12 +33,13 @@ public class EventReason {
 	public EventReason() {
 	}
 
-	public EventReason(Long id_event_reason, String nome, String descricao, Boolean status) {
+	public EventReason(Long id_event_reason, String nome, String descricao, boolean status, List<User> users) {
 		super();
 		this.id_event_reason = id_event_reason;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.status = status;
+		this.users = users;
 	}
 
 	public Long getId_event_reason() {
@@ -65,16 +66,22 @@ public class EventReason {
 		this.descricao = descricao;
 	}
 
-	public Boolean getStatus() {
+	public boolean isStatus() {
 		return status;
 	}
 
-	public void setStatus(Boolean descricao) {
+	public void setStatus(boolean status) {
 		this.status = status;
 	}
 
-<<<<<<< HEAD
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
+
+
 }
-=======
-}
->>>>>>> d463f932cd488977f927ae3e0a705e467eda0d34

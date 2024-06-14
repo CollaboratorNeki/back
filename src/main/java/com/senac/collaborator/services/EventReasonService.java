@@ -30,11 +30,11 @@ public class EventReasonService {
 		return eventReasonRepository.save(eventReason);
 	}
 
-	public boolean updateEventReason(Long idEventReason, EventReason eventReasonDetails) {
-		Optional<EventReason> eventReasonOptional = eventReasonRepository.findById(idEventReason);
+	public boolean updateEventReason(Long id_event_reason, EventReason eventReasonDetails) {
+		Optional<EventReason> eventReasonOptional = eventReasonRepository.findById(id_event_reason);
 		if (eventReasonOptional.isPresent()) {
 			EventReason antigoEventReason = eventReasonOptional.get();
-			antigoEventReason.setId_event_reason(idEventReason);
+			antigoEventReason.setId_event_reason(id_event_reason);
 			if (eventReasonDetails.getNome() != null)
 				;
 			{
@@ -52,8 +52,8 @@ public class EventReasonService {
 
 	}
 
-	public Boolean deleteEventReason(Long idEventReason) {
-		Optional<EventReason> eventReasonOptional = eventReasonRepository.findById(idEventReason);
+	public Boolean deleteEventReason(Long id_event_reason) {
+		Optional<EventReason> eventReasonOptional = eventReasonRepository.findById(id_event_reason);
 		if (eventReasonOptional.isPresent()) {
 			EventReason eventReason = eventReasonOptional.get();
 			eventReason.setStatus(false);
@@ -63,7 +63,7 @@ public class EventReasonService {
 		return false;
 	}
 
-	public EventReason getEventReasonById(Long idEventReason) {
+	public EventReason getEventReasonById(Long id_event_reason) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Metodo não implementado 'getEventReasonById'");
 	}

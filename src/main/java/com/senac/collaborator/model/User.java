@@ -38,7 +38,7 @@ public class User {
 	 
 	@ManyToOne
 	@JoinColumn(name = "id_role")
-	private Role idRole;
+	private Role id_role;
 
 	
 	  @OneToMany (mappedBy ="idResponsavel") 
