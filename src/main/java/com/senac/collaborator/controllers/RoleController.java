@@ -1,4 +1,4 @@
-package com.senac.collaborator.controllers;
+/*package com.senac.collaborator.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -47,4 +47,4 @@ public class RoleController {
         roleService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
-}
+}*/
