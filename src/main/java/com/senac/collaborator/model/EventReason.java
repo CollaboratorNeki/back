@@ -19,13 +19,18 @@ public class EventReason {
 
 	@Column(nullable = false)
 	private String descricao;
-
-	// gets e sets***************************
+	
+	@Column(name = "status")
+	private Boolean status;
 
 	public Long getIdEventReason() {
 		return idEventReason;
 	}
 
+	
+	// gets e sets***************************
+	
+	
 	public void setIdEventReason(Long idEventReason) {
 		this.idEventReason = idEventReason;
 	}
@@ -46,4 +51,10 @@ public class EventReason {
 		this.descricao = descricao;
 	}
 
-}
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}}
