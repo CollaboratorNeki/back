@@ -1,123 +1,181 @@
+
 package com.senac.collaborator.model;
 
+import java.util.List;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.OneToMany;
 @Entity
+@Table(name = "alm_tool")
 public class ALMTool {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idALMTool;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id_alm_tool;
 
-    @Column(nullable = false)
-    private String nome;
+	@Column(name = "nome")
+	private String nome;
 
-    @Column(nullable = true)
-    private String url;
+	@Column(name = "url")
+	private String url;
 
-    @Column(nullable = false)
-    private String login;
+	@Column(name = "login")
+	private String login;
 
-    @Column(nullable = false)
-    private String senha;
+	@Column(name = "senha")
+	private String senha;
 
-    @Column(nullable = false)
-    private String tipo;
+	@Column(name = "tipo")
+	private String tipo;
 
-    @Column(nullable = false)
-    private String vpn; // ativo - inativo
+	@Column(name = "vpn")
+	private String vpn; 
+	
+	@Column(name="status" )
+	private String status; 
+	
+	@Column(name="task_status")
+	private String task_status; 
+	
+	@Column(name="closure_status")
+	private String closure_status; 
 
-    @Column(nullable = false)
-    private String status; // ativo - inativo
 
-    @Column(nullable = true)
-    private String task_status; // status de tarefas disponiveis
+	@OneToMany
+	(mappedBy ="id_task")
+	private List<Task> task;
+	
+	
+	
+	@OneToMany
+	(mappedBy ="id_project")
+	private List<Project> project;
+	
 
-    @Column(nullable = true)
-    private String closure_status; // status fechamento de tarefas
+	public ALMTool () {}
+	
+	public ALMTool(Long id_alm_tool, String nome, String url, String login, String senha, String tipo, String vpn,
+			String status, String task_status, String closure_status) {
+		super();
+		this.id_alm_tool = id_alm_tool;
+		this.nome = nome;
+		this.url = url;
+		this.login = login;
+		this.senha = senha;
+		this.tipo = tipo;
+		this.vpn = vpn;
+		this.status = status;
+		this.task_status = task_status;
+		this.closure_status = closure_status;
+		
+		
+	}
 
-    // Getters e Setters
-    public Long getIdALMTool() {
-        return idALMTool;
-    }
 
-    public void setIdALMTool(Long idALMTool) {
-        this.idALMTool = idALMTool;
-    }
+	public Long getId_alm_tool() {
+		return id_alm_tool;
+	}
 
-    public String getNome() {
-        return nome;
-    }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public void setId_alm_tool(Long id_alm_tool) {
+		this.id_alm_tool = id_alm_tool;
+	}
 
-    public String getUrl() {
-        return url;
-    }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public String getLogin() {
-        return login;
-    }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public String getSenha() {
-        return senha;
-    }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
+	public String getUrl() {
+		return url;
+	}
 
-    public String getTipo() {
-        return tipo;
-    }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
-    public String getVpn() {
-        return vpn;
-    }
 
-    public void setVpn(String vpn) {
-        this.vpn = vpn;
-    }
+	public String getLogin() {
+		return login;
+	}
 
-    public String getStatus() {
-        return status;
-    }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+	public void setLogin(String login) {
+		this.login = login;
+	}
 
-    public String getTask_status() {
-        return task_status;
-    }
 
-    public void setTask_status(String task_status) {
-        this.task_status = task_status;
-    }
+	public String getSenha() {
+		return senha;
+	}
 
-    public String getClosure_status() {
-        return closure_status;
-    }
 
-    public void setClosure_status(String closure_status) {
-        this.closure_status = closure_status;
-    }
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+
+	public String getTipo() {
+		return tipo;
+	}
+
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+
+	public String getVpn() {
+		return vpn;
+	}
+
+
+	public void setVpn(String vpn) {
+		this.vpn = vpn;
+	}
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+	public String getTask_status() {
+		return task_status;
+	}
+
+
+	public void setTask_status(String task_status) {
+		this.task_status = task_status;
+	}
+
+
+	public String getClosure_status() {
+		return closure_status;
+	}
+
+
+	public void setClosure_status(String closure_status) {
+		this.closure_status = closure_status;
+	}
+
+	
 }
+
