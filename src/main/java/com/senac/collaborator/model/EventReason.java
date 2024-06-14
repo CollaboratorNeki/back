@@ -73,4 +73,8 @@ public class EventReason {
 		this.status = status;
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d463f932cd488977f927ae3e0a705e467eda0d34
