@@ -1,16 +1,19 @@
 
 package com.senac.collaborator.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.GenerationType;
-import java.util.List;
 
 @Entity
 @Table(name = "usuario")
@@ -19,7 +22,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_user")
-	private long id_user;
+	private long idUser;
 
 	@Column(name = "nome")
 	private String nome;
@@ -30,45 +33,44 @@ public class User {
 	@Column(name = "senha")
 	private long senha;
 
-	
-	  @ManyToOne
-	  @JoinColumn
-	  (name ="id_event_reason")
-	  private EventReason id_event_reason;
-	 
 	@ManyToOne
-	@JoinColumn(name = "id_role")
-	private Role id_role;
+	@JoinColumn(name = "id_event_reason")
+	private EventReason idEventReason;
 
-	
-	  @OneToMany (mappedBy ="idResponsavel") 
-	  private List<Task> id_responsavel;
-	  
-	  
-	  @OneToMany (mappedBy ="id_remetente") 
-	  private List<Message> message;
-	  
-	  
-	  @OneToMany (mappedBy ="id_destinatario") 
-	  private List<Message> id_destinatario;
-	 
+//	@ManyToOne
+//	@JoinColumn(name = "id_role")
+	@ManyToMany
+	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "usuario", referencedColumnName = "id_user"), inverseJoinColumns = @JoinColumn(name = "role", referencedColumnName = "id_role"))
+	private List<Role> idRoles;
 
-	public User() {}
+	@OneToMany(mappedBy = "idResponsavel")
+	private List<Task> id_responsavel;
 
-	public User(long id_user, String nome, String email, long senha) {
+	@OneToMany(mappedBy = "id_remetente")
+	private List<Message> message;
+
+	@OneToMany(mappedBy = "id_destinatario")
+	private List<Message> id_destinatario;
+
+	public User() {
+	}
+
+	public User(long idUser, String nome, String email, long senha) {
 		super();
-		this.id_user = id_user;
+		this.idUser = idUser;
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
 	}
 
-	public long getId_user() {
-		return id_user;
+	
+
+	public long getIdUser() {
+		return idUser;
 	}
 
-	public void setId_user(long id_user) {
-		this.id_user = id_user;
+	public void setIdUser(long idUser) {
+		this.idUser = idUser;
 	}
 
 	public String getNome() {
@@ -94,10 +96,5 @@ public class User {
 	public void setSenha(long senha) {
 		this.senha = senha;
 	}
-	
-	
-
-
-
 
 }

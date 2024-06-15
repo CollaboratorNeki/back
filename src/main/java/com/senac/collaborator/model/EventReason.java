@@ -16,7 +16,7 @@ public class EventReason {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_event_reason;
+	private Long idEventReason;
 
 	@Column(name = "nome")
 	private String nome;
@@ -27,27 +27,28 @@ public class EventReason {
 	@Column(name = "status")
 	private boolean status;
 
-	@OneToMany(mappedBy = "id_event_reason")
+	@OneToMany(mappedBy = "idEventReason")
 	private List<User> users;
 
 	public EventReason() {
 	}
 
-	public EventReason(Long id_event_reason, String nome, String descricao, boolean status, List<User> users) {
+	public EventReason(Long idEventReason, String nome, String descricao, boolean status, List<User> users) {
 		super();
-		this.id_event_reason = id_event_reason;
+		this.idEventReason = idEventReason;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.status = status;
 		this.users = users;
 	}
 
-	public Long getId_event_reason() {
-		return id_event_reason;
+	
+	public Long getIdEventReason() {
+		return idEventReason;
 	}
 
-	public void setId_event_reason(Long id_event_reason) {
-		this.id_event_reason = id_event_reason;
+	public void setIdEventReason(Long idEventReason) {
+		this.idEventReason = idEventReason;
 	}
 
 	public String getNome() {

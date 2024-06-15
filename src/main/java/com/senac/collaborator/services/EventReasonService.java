@@ -34,7 +34,7 @@ public class EventReasonService {
 		Optional<EventReason> eventReasonOptional = eventReasonRepository.findById(id_event_reason);
 		if (eventReasonOptional.isPresent()) {
 			EventReason antigoEventReason = eventReasonOptional.get();
-			antigoEventReason.setId_event_reason(id_event_reason);
+			antigoEventReason.setIdEventReason(id_event_reason);
 			if (eventReasonDetails.getNome() != null)
 				;
 			{
