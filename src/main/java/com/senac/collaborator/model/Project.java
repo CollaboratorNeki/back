@@ -13,88 +13,84 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Project")
+@Table(name = "project")
 public class Project {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idProject")
-	private long idProject;
+	@Column(name = "id_project")
+	private long id_project;
 
 	@Column(name = "nome")
 	private String nome;
 
-	@Column(name = "Descricao")
-	private String Descricao;
+	@Column(name = "descricao")
+	private String descricao;
 
-	@Column(name = "dataInicio")
-	private int dataInicio;
+	@Column(name = "data_inicio")
+	private int data_inicio;
 
-	@Column(name = "dataFim")
-	private int dataFim;
+	@Column(name = "data_fim")
+	private int data_fim;
 
-	@Column(name = "statusCustoExtra")
-	private boolean statusCustoExtra;
+	@Column(name = "status_custo_extra")
+	private String status_custo_extra;
 
-	@Column(name = "custoEstimado")
-	private int custoEstimado;
+	@Column(name = "custo_estimado")
+	private int custo_estimado;
 
 	@Column(name = "custoReal")
-	private int custoReal;
+	private int custo_real;
 
 	@Column(name = "esforçoEstimado")
 	private String esforçoEstimado;
 
 	@Column(name = "esforçoReal")
-	private String esforçoReal;
+	private String esforço_real;
 
-	@OneToMany(mappedBy = "IdProject")
-	private List<Task> projectTask;
+	@OneToMany(mappedBy = "project")
+	private List<Task> project_task;
 
-	@OneToMany(mappedBy = "idProject")
-	private List<ExtraCost> idproject;
+	@OneToMany(mappedBy = "project")
+	private List<ExtraCost> project;
 
-	@OneToMany(mappedBy = "idTechnology")
-	private List<Technology> technology;
+	@OneToMany(mappedBy = "project")
+	private List<Technology> technologies;
+
 
 	@ManyToOne
-	@JoinColumn(name = "idClient")
+	@JoinColumn(name = "id_client")
 	private Client client;
 
 	@ManyToOne
-	@JoinColumn(name = "idALMTool")
-	private ALMTool almtool;
+	@JoinColumn(name = "id_almtool")
+	private ALMTool id_almtool;
 
 	public Project() {
 	}
 
-	public Project(long idProject, String nome, String descricao, int dataInicio, int dataFim, boolean statusCustoExtra,
-			int custoEstimado, int custoReal, String esforçoEstimado, String esforçoReal, List<Task> projectTask,
-			List<ExtraCost> idproject2, List<Technology> technology, Client client, ALMTool almtool) {
+	public Project(long id_project, String nome, String descricao, int data_inicio, int data_fim,
+			String status_custo_extra, int custo_estimado, int custo_real, String esforçoEstimado,
+			String esforço_real) {
 		super();
-		this.idProject = idProject;
+		this.id_project = id_project;
 		this.nome = nome;
-		Descricao = descricao;
-		this.dataInicio = dataInicio;
-		this.dataFim = dataFim;
-		this.statusCustoExtra = statusCustoExtra;
-		this.custoEstimado = custoEstimado;
-		this.custoReal = custoReal;
+		this.descricao = descricao;
+		this.data_inicio = data_inicio;
+		this.data_fim = data_fim;
+		this.status_custo_extra = status_custo_extra;
+		this.custo_estimado = custo_estimado;
+		this.custo_real = custo_real;
 		this.esforçoEstimado = esforçoEstimado;
-		this.esforçoReal = esforçoReal;
-		this.projectTask = projectTask;
-//		idroject = idproject2; // CONFIRMAR  - 
-		this.technology = technology;
-		this.client = client;
-		this.almtool = almtool;
+		this.esforço_real = esforço_real;
 	}
 
-	public long getIdProject() {
-		return idProject;
+	public long getId_project() {
+		return id_project;
 	}
 
-	public void setIdProject(long idProject) {
-		this.idProject = idProject;
+	public void setId_project(long id_project) {
+		this.id_project = id_project;
 	}
 
 	public String getNome() {
@@ -106,51 +102,51 @@ public class Project {
 	}
 
 	public String getDescricao() {
-		return Descricao;
+		return descricao;
 	}
 
 	public void setDescricao(String descricao) {
-		Descricao = descricao;
+		this.descricao = descricao;
 	}
 
-	public int getDataInicio() {
-		return dataInicio;
+	public int getData_inicio() {
+		return data_inicio;
 	}
 
-	public void setDataInicio(int dataInicio) {
-		this.dataInicio = dataInicio;
+	public void setData_inicio(int data_inicio) {
+		this.data_inicio = data_inicio;
 	}
 
-	public int getDataFim() {
-		return dataFim;
+	public int getData_fim() {
+		return data_fim;
 	}
 
-	public void setDataFim(int dataFim) {
-		this.dataFim = dataFim;
+	public void setData_fim(int data_fim) {
+		this.data_fim = data_fim;
 	}
 
-	public boolean isStatusCustoExtra() {
-		return statusCustoExtra;
+	public String getStatus_custo_extra() {
+		return status_custo_extra;
 	}
 
-	public void setStatusCustoExtra(boolean statusCustoExtra) {
-		this.statusCustoExtra = statusCustoExtra;
+	public void setStatus_custo_extra(String status_custo_extra) {
+		this.status_custo_extra = status_custo_extra;
 	}
 
-	public int getCustoEstimado() {
-		return custoEstimado;
+	public int getCusto_estimado() {
+		return custo_estimado;
 	}
 
-	public void setCustoEstimado(int custoEstimado) {
-		this.custoEstimado = custoEstimado;
+	public void setCusto_estimado(int custo_estimado) {
+		this.custo_estimado = custo_estimado;
 	}
 
-	public int getCustoReal() {
-		return custoReal;
+	public int getCusto_real() {
+		return custo_real;
 	}
 
-	public void setCustoReal(int custoReal) {
-		this.custoReal = custoReal;
+	public void setCusto_real(int custo_real) {
+		this.custo_real = custo_real;
 	}
 
 	public String getEsforçoEstimado() {
@@ -161,51 +157,13 @@ public class Project {
 		this.esforçoEstimado = esforçoEstimado;
 	}
 
-	public String getEsforçoReal() {
-		return esforçoReal;
+	public String getEsforço_real() {
+		return esforço_real;
 	}
 
-	public void setEsforçoReal(String esforçoReal) {
-		this.esforçoReal = esforçoReal;
+	public void setEsforço_real(String esforço_real) {
+		this.esforço_real = esforço_real;
 	}
 
-	public List<Task> getProjectTask() {
-		return projectTask;
-	}
-
-	public void setProjectTask(List<Task> projectTask) {
-		this.projectTask = projectTask;
-	}
-
-	public List<ExtraCost> getIdproject() {
-		return idproject;
-	}
-
-	public void setIdproject(List<ExtraCost> idproject) {
-		this.idproject = idproject;
-	}
-
-	public List<Technology> getTechnology() {
-		return technology;
-	}
-
-	public void setTechnology(List<Technology> technology) {
-		this.technology = technology;
-	}
-
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
-
-	public ALMTool getAlmtool() {
-		return almtool;
-	}
-
-	public void setAlmtool(ALMTool almtool) {
-		this.almtool = almtool;
-	}
+	
 }

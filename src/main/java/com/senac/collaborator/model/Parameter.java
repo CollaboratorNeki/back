@@ -5,47 +5,57 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-/* Esta classe serve somente para alterar parametros do banco de dados 
- * sem a necessidade de alterar as entidade diretamente no banco.
- * 
-*/
+
 
 @Entity
+@Table(name ="parameter")
 public class Parameter {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idParameter;
+	private Long id_parameter;
 
-	@Column(nullable = false)
+	@Column(name ="nome")
 	private String nome;
 
-	@Column(nullable = false)
+	@Column(name="valor")
 	private String valor;
 
-	public Long getIdParameter() {
-		return idParameter;
-	}
+	public Parameter () {}
 
-	public void setIdParameter(Long idParameter) {
-		this.idParameter = idParameter;
-	}
+public Parameter(Long id_parameter, String nome, String valor) {
+	super();
+	this.id_parameter = id_parameter;
+	this.nome = nome;
+	this.valor = valor;
+}
 
-	public String getNome() {
-		return nome;
-	}
+public Long getId_parameter() {
+	return id_parameter;
+}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+public void setId_parameter(Long id_parameter) {
+	this.id_parameter = id_parameter;
+}
 
-	public String getValor() {
-		return valor;
-	}
+public String getNome() {
+	return nome;
+}
 
-	public void setValor(String valor) {
-		this.valor = valor;
-	}
+public void setNome(String nome) {
+	this.nome = nome;
+}
+
+public String getValor() {
+	return valor;
+}
+
+public void setValor(String valor) {
+	this.valor = valor;
+}
+	
+	
 
 }

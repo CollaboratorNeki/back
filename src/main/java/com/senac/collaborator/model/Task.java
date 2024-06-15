@@ -7,17 +7,18 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.List;
 
 @Entity
-@Table(name = "Task")
+@Table(name = "task")
 public class Task {
 
 	@Id  
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name ="idTask")
-	private long idTask;
+	@Column(name ="id_task")
+	private long id_task;
 	
 	@Column(name ="nome")
 	private String nome;
@@ -25,20 +26,20 @@ public class Task {
 	@Column(name ="descricao")
 	private String descricao;
 	
-	@Column(name ="dataInicio")
-	private int dataInicio;
+	@Column(name ="data_inicio")
+	private int data_inicio;
 	
-	@Column(name ="dataFim")
-	private int dataFim;
+	@Column(name ="dat_fim")
+	private int data_fim;
 	
 	@Column(name ="status")
-	private boolean status;
+	private String status;
 	
-	@Column(name ="esforcoEstimado")
-	private String esforcoEtimado;
+	@Column(name ="esforco_estimado")
+	private String esforco_estimado;
 	
-	@Column(name ="esforcoReal")
-	private String esforcoReal;
+	@Column(name ="esforco_real")
+	private String esforco_real;
 	
 
 	@ManyToOne
@@ -47,48 +48,44 @@ public class Task {
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "idProject")
-	private Project idProject;
+	@JoinColumn(name = "id_project")
+	private Project project;
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "idALMTool")
-	private ALMTool idalmtool;
+	@JoinColumn(name = "id_almtool")
+	private ALMTool id_almtool;
 	
+	@OneToMany
+	(mappedBy="id_task")
+	private List<Task> id_taskList;
 	
 	
 	public Task () {}
 
 
-
-	public Task(long idTask, String nome, String descricao, int dataInicio, int dataFim, boolean status,
-			String esforcoEtimado, String esforcoReal, User idResponsavel, Project idProject, ALMTool idalmtool) {
+	public Task(long id_task, String nome, String descricao, int data_inicio, int data_fim, String status,
+			String esforco_estimado, String esforco_real) {
 		super();
-		this.idTask = idTask;
+		this.id_task = id_task;
 		this.nome = nome;
 		this.descricao = descricao;
-		this.dataInicio = dataInicio;
-		this.dataFim = dataFim;
+		this.data_inicio = data_inicio;
+		this.data_fim = data_fim;
 		this.status = status;
-		this.esforcoEtimado = esforcoEtimado;
-		this.esforcoReal = esforcoReal;
-		this.idResponsavel = idResponsavel;
-		this.idProject = idProject;
-		this.idalmtool = idalmtool;
+		this.esforco_estimado = esforco_estimado;
+		this.esforco_real = esforco_real;
 	}
 
 
-
-	public long getIdTask() {
-		return idTask;
+	public long getId_task() {
+		return id_task;
 	}
 
 
-
-	public void setIdTask(long idTask) {
-		this.idTask = idTask;
+	public void setId_task(long id_task) {
+		this.id_task = id_task;
 	}
-
 
 
 	public String getNome() {
@@ -96,11 +93,9 @@ public class Task {
 	}
 
 
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
 
 
 	public String getDescricao() {
@@ -108,106 +103,65 @@ public class Task {
 	}
 
 
-
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
 
 
-
-	public int getDataInicio() {
-		return dataInicio;
+	public int getData_inicio() {
+		return data_inicio;
 	}
 
 
-
-	public void setDataInicio(int dataInicio) {
-		this.dataInicio = dataInicio;
+	public void setData_inicio(int data_inicio) {
+		this.data_inicio = data_inicio;
 	}
 
 
-
-	public int getDataFim() {
-		return dataFim;
+	public int getData_fim() {
+		return data_fim;
 	}
 
 
-
-	public void setDataFim(int dataFim) {
-		this.dataFim = dataFim;
+	public void setData_fim(int data_fim) {
+		this.data_fim = data_fim;
 	}
 
 
-
-	public boolean isStatus() {
+	public String getStatus() {
 		return status;
 	}
 
 
-
-	public void setStatus(boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
 
-
-	public String getEsforcoEtimado() {
-		return esforcoEtimado;
+	public String getEsforco_estimado() {
+		return esforco_estimado;
 	}
 
 
-
-	public void setEsforcoEtimado(String esforcoEtimado) {
-		this.esforcoEtimado = esforcoEtimado;
+	public void setEsforco_estimado(String esforco_estimado) {
+		this.esforco_estimado = esforco_estimado;
 	}
 
 
-
-	public String getEsforcoReal() {
-		return esforcoReal;
+	public String getEsforco_real() {
+		return esforco_real;
 	}
 
 
-
-	public void setEsforcoReal(String esforcoReal) {
-		this.esforcoReal = esforcoReal;
+	public void setEsforco_real(String esforco_real) {
+		this.esforco_real = esforco_real;
 	}
 
 
+	
 
-	public User getIdResponsavel() {
-		return idResponsavel;
-	}
+	
 
-
-
-	public void setIdResponsavel(User idResponsavel) {
-		this.idResponsavel = idResponsavel;
-	}
-
-
-
-	public Project getIdProject() {
-		return idProject;
-	}
-
-
-
-	public void setIdProject(Project idProject) {
-		this.idProject = idProject;
-	}
-
-
-
-	public ALMTool getIdalmtool() {
-		return idalmtool;
-	}
-
-
-
-	public void setIdalmtool(ALMTool idalmtool) {
-		this.idalmtool = idalmtool;
-	}
 	
 	
 }

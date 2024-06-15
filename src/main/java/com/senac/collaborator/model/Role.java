@@ -10,89 +10,68 @@ import jakarta.persistence.Table;
 import java.util.List;
 
 @Entity
-@Table(name ="Role")
-
+@Table(name = "role")
 public class Role {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="idRole")
+	@Column(name = "id_role")
 	private Long idRole;
-	
-	@Column(name ="nome")
+
+	@Column(name = "nome")
 	private String nome;
-	
-	@Column(name ="descricao")
+
+	@Column(name = "descricao")
 	private String descricao;
-	
-	@Column(name ="status")
+
+	@Column(name = "status")
 	private boolean status;
-	
-	@OneToMany(mappedBy="idRole")
-	private List<User> users;
-	
-	
-	public Role () {}
 
+//    @OneToMany(mappedBy = "idRole")
+//    private List<User> users;
 
-	public Role(Long idRole, String nome, String descricao, boolean status, List<User> users) {
-		super();
-		this.idRole = idRole;
-		this.nome = nome;
-		this.descricao = descricao;
-		this.status = status;
-		this.users = users;
+	public Role() {
 	}
-
 
 	public Long getIdRole() {
 		return idRole;
 	}
 
-
-	public void setIdRole(Long idRole) {
+	public Role(Long idRole, String nome, String descricao, boolean status) {
+		super();
 		this.idRole = idRole;
-	}
+		this.nome = nome;
+		this.descricao = descricao;
+		this.status = status;
 
+	}
 
 	public String getNome() {
 		return nome;
 	}
 
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
 
 	public String getDescricao() {
 		return descricao;
 	}
 
-
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
 
 	public boolean isStatus() {
 		return status;
 	}
 
-
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
 
-
-	public List<User> getUsers() {
-		return users;
+	public void setIdRole(Long idRole) {
+		this.idRole = idRole;
 	}
-
-
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
-
 
 }
