@@ -16,7 +16,7 @@ public class ALMTool {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_alm_tool;
+	private Long idAlmTool;
 
 	@Column(name = "nome")
 	private String nome;
@@ -40,29 +40,25 @@ public class ALMTool {
 	private String status; 
 	
 	@Column(name="task_status")
-	private String task_status; 
+	private String taskStatus; 
 	
 	@Column(name="closure_status")
-	private String closure_status; 
-
+	private String closureStatus; 
 
 	@OneToMany
 	(mappedBy ="id_task")
 	private List<Task> task;
 	
-	
-	
 	@OneToMany
 	(mappedBy ="id_project")
 	private List<Project> project;
 	
+	public ALMTool() {}
 
-	public ALMTool () {}
-	
-	public ALMTool(Long id_alm_tool, String nome, String url, String login, String senha, String tipo, String vpn,
-			String status, String task_status, String closure_status) {
+	public ALMTool(Long idAlmTool, String nome, String url, String login, String senha, String tipo, String vpn,
+			String status, String taskStatus, String closureStatus, List<Task> task, List<Project> project) {
 		super();
-		this.id_alm_tool = id_alm_tool;
+		this.idAlmTool = idAlmTool;
 		this.nome = nome;
 		this.url = url;
 		this.login = login;
@@ -70,112 +66,111 @@ public class ALMTool {
 		this.tipo = tipo;
 		this.vpn = vpn;
 		this.status = status;
-		this.task_status = task_status;
-		this.closure_status = closure_status;
-		
-		
+		this.taskStatus = taskStatus;
+		this.closureStatus = closureStatus;
+		this.task = task;
+		this.project = project;
 	}
 
-
-	public Long getId_alm_tool() {
-		return id_alm_tool;
+	public Long getIdAlmTool() {
+		return idAlmTool;
 	}
 
-
-	public void setId_alm_tool(Long id_alm_tool) {
-		this.id_alm_tool = id_alm_tool;
+	public void setIdAlmTool(Long idAlmTool) {
+		this.idAlmTool = idAlmTool;
 	}
-
 
 	public String getNome() {
 		return nome;
 	}
 
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
 
 	public String getUrl() {
 		return url;
 	}
 
-
 	public void setUrl(String url) {
 		this.url = url;
 	}
-
 
 	public String getLogin() {
 		return login;
 	}
 
-
 	public void setLogin(String login) {
 		this.login = login;
 	}
-
 
 	public String getSenha() {
 		return senha;
 	}
 
-
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
 
 	public String getTipo() {
 		return tipo;
 	}
 
-
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-
 
 	public String getVpn() {
 		return vpn;
 	}
 
-
 	public void setVpn(String vpn) {
 		this.vpn = vpn;
 	}
-
 
 	public String getStatus() {
 		return status;
 	}
 
-
 	public void setStatus(String status) {
 		this.status = status;
 	}
 
-
-	public String getTask_status() {
-		return task_status;
+	public String getTaskStatus() {
+		return taskStatus;
 	}
 
-
-	public void setTask_status(String task_status) {
-		this.task_status = task_status;
+	public void setTaskStatus(String taskStatus) {
+		this.taskStatus = taskStatus;
 	}
 
-
-	public String getClosure_status() {
-		return closure_status;
+	public String getClosureStatus() {
+		return closureStatus;
 	}
 
-
-	public void setClosure_status(String closure_status) {
-		this.closure_status = closure_status;
+	public void setClosureStatus(String closureStatus) {
+		this.closureStatus = closureStatus;
 	}
 
+	public List<Task> getTask() {
+		return task;
+	}
+
+	public void setTask(List<Task> task) {
+		this.task = task;
+	}
+
+	public List<Project> getProject() {
+		return project;
+	}
+
+	public void setProject(List<Project> project) {
+		this.project = project;
+	}
+	
+	
+
+	
 	
 }
 

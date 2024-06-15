@@ -9,13 +9,13 @@ public class Message {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_message;
+	private Long idMessage;
 	
 	@Column(name ="conteudo")
 	private String conteudo;
 	
 	@Column(name ="data_envio")
-	private LocalDateTime data_envio;
+	private LocalDateTime dataEnvio;
 	
 
     @ManyToOne
@@ -30,22 +30,31 @@ public class Message {
 	
    @ManyToOne
     @JoinColumn(name = "id_task")
-	private Task id_task;
+	private Task idTask;
 
 
-	
-	
-	
-	public Message () {}
+	public Message() {}
 
 
-	public Long getId_message() {
-		return id_message;
+	public Message(Long idMessage, String conteudo, LocalDateTime dataEnvio, User idRemetente, User idDestinatario,
+			Task idTask) {
+		super();
+		this.idMessage = idMessage;
+		this.conteudo = conteudo;
+		this.dataEnvio = dataEnvio;
+		this.idRemetente = idRemetente;
+		this.idDestinatario = idDestinatario;
+		this.idTask = idTask;
 	}
 
 
-	public void setId_message(Long id_message) {
-		this.id_message = id_message;
+	public Long getIdMessage() {
+		return idMessage;
+	}
+
+
+	public void setIdMessage(Long idMessage) {
+		this.idMessage = idMessage;
 	}
 
 
@@ -59,23 +68,44 @@ public class Message {
 	}
 
 
-	public LocalDateTime getData_envio() {
-		return data_envio;
+	public LocalDateTime getDataEnvio() {
+		return dataEnvio;
 	}
 
 
-	public void setData_envio(LocalDateTime data_envio) {
-		this.data_envio = data_envio;
+	public void setDataEnvio(LocalDateTime dataEnvio) {
+		this.dataEnvio = dataEnvio;
 	}
 
 
-	public Message(Long id_message, String conteudo, LocalDateTime data_envio) {
-		super();
-		this.id_message = id_message;
-		this.conteudo = conteudo;
-		this.data_envio = data_envio;
+	public User getIdRemetente() {
+		return idRemetente;
 	}
-	
+
+
+	public void setIdRemetente(User idRemetente) {
+		this.idRemetente = idRemetente;
+	}
+
+
+	public User getIdDestinatario() {
+		return idDestinatario;
+	}
+
+
+	public void setIdDestinatario(User idDestinatario) {
+		this.idDestinatario = idDestinatario;
+	}
+
+
+	public Task getIdTask() {
+		return idTask;
+	}
+
+
+	public void setIdTask(Task idTask) {
+		this.idTask = idTask;
+	}
 	
 	
 	
