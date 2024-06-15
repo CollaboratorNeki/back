@@ -1,11 +1,13 @@
 package com.senac.collaborator.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.senac.collaborator.dto.EventReasonDTO;
 import com.senac.collaborator.model.EventReason;
 import com.senac.collaborator.repositores.EventReasonRepository;
 
@@ -19,6 +21,18 @@ public class EventReasonService {
 	public List<EventReason> listarEventReasons() {
 
 		return eventReasonRepository.findAll();
+	}
+	
+	public List<EventReasonDTO> listarEventReasonsDTO() {
+		List<EventReason> eventReasonList = eventReasonRepository.findAll();
+		List<EventReasonDTO> eventReasonListDTO = new ArrayList<>();
+		for(EventReason eventReason : eventReasonList) {
+			EventReasonDTO eventReasonDTO = new EventReasonDTO(); 
+			eventReasonDTO.setDescricao(eventReason.getDescricao());
+			eventReasonDTO.setNome(eventReason.getNome());
+			eventReasonListDTO.add(eventReasonDTO);
+		}
+		return eventReasonListDTO;
 	}
 
 //	public EventReason getEventReasonById(Long idEventReason) {

@@ -46,11 +46,11 @@ public class User {
 	@OneToMany(mappedBy = "idResponsavel")
 	private List<Task> id_responsavel;
 
-	@OneToMany(mappedBy = "id_remetente")
+	@OneToMany(mappedBy = "idRemetente")
 	private List<Message> message;
 
-	@OneToMany(mappedBy = "id_destinatario")
-	private List<Message> id_destinatario;
+	@OneToMany(mappedBy = "idDestinatario")
+	private List<Message> idDestinatario;
 
 	public User() {
 	}

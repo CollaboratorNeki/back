@@ -19,13 +19,13 @@ public class Message {
 	
 
     @ManyToOne
-	@JoinColumn(name = "id_remetente")
-	private User id_remetente;
+	@JoinColumn(name = "idRemetente")
+	private User idRemetente;
 	
 
 	@ManyToOne
-	@JoinColumn(name = "id_destinatario")
-	private User id_destinatario;
+	@JoinColumn(name = "idDestinatario")
+	private User idDestinatario;
 	
 	
    @ManyToOne

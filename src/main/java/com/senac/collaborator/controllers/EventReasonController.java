@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.senac.collaborator.dto.EventReasonDTO;
 import com.senac.collaborator.model.EventReason;
 import com.senac.collaborator.services.EventReasonService;
 
@@ -29,6 +30,17 @@ public class EventReasonController {
     public List<EventReason> listarEventReasons() {
         return eventReasonService.listarEventReasons();
     }
+    
+    @GetMapping("/listarReasonEvent")
+    public List<EventReasonDTO> listarEventReasonsDTO() {
+        return eventReasonService.listarEventReasonsDTO();
+    }
+    
+    
+    
+    
+    
+    
 
     // Buscar por ID
     @GetMapping("/buscar/{idEventReason}")
