@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.senac.collaborator.dto.RoleDTO;
 import com.senac.collaborator.model.Role;
 import com.senac.collaborator.services.RoleService;
 
@@ -22,7 +23,16 @@ public class RoleController {
     public List<Role> listarRoles() {
         return roleService.listarRoles();
     }
+    
+    // listando atributos nome, descricao e status
+    @GetMapping("/listarRole")
+    public List<RoleDTO> listarRole() {
+        return roleService.listarRole();
+    }
 
+    
+    
+    
     // Buscar por ID
     @GetMapping("/buscar/{id_role}")
     public ResponseEntity<Role> getRoleById(@PathVariable Long id_role) {

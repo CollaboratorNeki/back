@@ -1,10 +1,12 @@
 package com.senac.collaborator.services;
 
+import com.senac.collaborator.dto.RoleDTO;
 import com.senac.collaborator.model.Role;
 import com.senac.collaborator.repositores.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +21,19 @@ public class RoleService {
     }
     
     
-    
+    public List<RoleDTO> listarRole(){
+    	List<Role> listRole = roleRepository.findAll();
+    	List<RoleDTO> listRoleDTO = new ArrayList<>();
+    	for(Role itemRole : listRole) {
+    		RoleDTO roleDTO = new RoleDTO();
+    		roleDTO.setDescricao(itemRole.getDescricao());
+    		roleDTO.setNome(itemRole.getNome());
+    		roleDTO.setStatus(itemRole.isStatus());
+    		listRoleDTO.add(roleDTO);	
+    	}
+    	return listRoleDTO;
+    	
+    }
     
     
     
