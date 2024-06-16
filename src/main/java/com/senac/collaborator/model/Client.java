@@ -30,7 +30,7 @@ public class Client {
 	
 	
 	 @OneToMany
-	(mappedBy ="id_project")
+	(mappedBy ="idProject")
 	private List<Project> project;
 	
 	

@@ -46,11 +46,11 @@ public class ALMTool {
 	private String closureStatus; 
 
 	@OneToMany
-	(mappedBy ="id_task")
+	(mappedBy ="idTask") //id_task
 	private List<Task> task;
 	
 	@OneToMany
-	(mappedBy ="id_project")
+	(mappedBy ="idProject")// id_project
 	private List<Project> project;
 	
 	public ALMTool() {}

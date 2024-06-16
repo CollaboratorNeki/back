@@ -42,7 +42,7 @@ public class Task {
 	private String esforcoReal;
 
 	@ManyToOne
-	@JoinColumn(name = "idResponsavel")
+	@JoinColumn(name = "id_responsavel")
 	private User idResponsavel;
 
 	@ManyToOne
@@ -53,7 +53,7 @@ public class Task {
 	@JoinColumn(name = "id_almtool")
 	private ALMTool idAlmTool;
 
-	@OneToMany(mappedBy = "id_task")
+	@OneToMany(mappedBy = "idTask")
 	private List<Task> idTaskList;
 
 	public Task() {
