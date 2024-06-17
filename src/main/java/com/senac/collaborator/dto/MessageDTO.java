@@ -1,5 +1,6 @@
 package com.senac.collaborator.dto;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.senac.collaborator.model.Message;
@@ -8,7 +9,7 @@ public class MessageDTO {
 
 	private String conteudo;
 
-	private LocalDateTime dataEnvio;
+	private LocalDate dataEnvio;
 
 	private String tipo;
 
@@ -33,11 +34,11 @@ public class MessageDTO {
 		this.conteudo = conteudo;
 	}
 
-	public LocalDateTime getDataEnvio() {
+	public LocalDate getDataEnvio() {
 		return dataEnvio;
 	}
 
-	public void setDataEnvio(LocalDateTime dataEnvio) {
+	public void setDataEnvio(LocalDate dataEnvio) {
 		this.dataEnvio = dataEnvio;
 
 	}

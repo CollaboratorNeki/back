@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.senac.collaborator.dto.MessageDTO;
 import com.senac.collaborator.model.Message;
 import com.senac.collaborator.repositores.MessageRepository;
-
+@Service
 public class MessageService {
 	@Autowired
 	MessageRepository messageRepository;
@@ -31,11 +32,16 @@ public class MessageService {
 		return messagesDto;
 
 	}
-	
-//	public MessageDTO saveMessages(MessageDTO messageDto) {
-//		Message message = new Message(messageDto);
-//		messageRepository.save(message);
-//		return messageDto;
-//	}
+
+	public boolean saveMessages(MessageDTO messageDto) {
+		Message message = new Message(messageDto);
+		Message mTest = messageRepository.save(message);
+
+		if (mTest != null) {
+			return true;
+		}
+
+		return false;
+	}
 
 }

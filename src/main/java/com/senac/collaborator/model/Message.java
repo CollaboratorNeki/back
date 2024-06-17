@@ -2,6 +2,8 @@ package com.senac.collaborator.model;
 import jakarta.persistence.*;
 import java.time.*;
 
+import com.senac.collaborator.dto.MessageDTO;
+
 
 @Entity
 @Table(name ="message")
@@ -21,7 +23,7 @@ public class Message {
 	private String acao;
 	
 	@Column(name ="data_envio")
-	private LocalDateTime dataEnvio;
+	private LocalDate dataEnvio;
 	
 
     @ManyToOne
@@ -42,7 +44,7 @@ public class Message {
 	public Message() {}
 
 
-	public Message(Long idMessage, String conteudo, String tipo, String acao, LocalDateTime dataEnvio, User idRemetente,
+	public Message(Long idMessage, String conteudo, String tipo, String acao, LocalDate dataEnvio, User idRemetente,
 			User idDestinatario, Task idTask) {
 		super();
 		this.idMessage = idMessage;
@@ -55,7 +57,15 @@ public class Message {
 		this.idTask = idTask;
 	}
 
-
+	public Message(MessageDTO messageDto) {
+		this.acao = messageDto.getAcao();
+		this.conteudo = messageDto.getAcao();
+		this.dataEnvio = messageDto.getDataEnvio();
+		this.tipo = messageDto.getTipo();
+	}
+	
+	
+	
 	public Long getIdMessage() {
 		return idMessage;
 	}
@@ -96,12 +106,12 @@ public class Message {
 	}
 
 
-	public LocalDateTime getDataEnvio() {
+	public LocalDate getDataEnvio() {
 		return dataEnvio;
 	}
 
 
-	public void setDataEnvio(LocalDateTime dataEnvio) {
+	public void setDataEnvio(LocalDate dataEnvio) {
 		this.dataEnvio = dataEnvio;
 	}
 
