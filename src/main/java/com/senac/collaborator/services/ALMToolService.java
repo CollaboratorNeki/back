@@ -28,13 +28,74 @@ public class ALMToolService {
 			almDto.setSenha(itemAlm.getSenha());
 			almDto.setTipo(itemAlm.getTipo());
 			almDto.setVpn(itemAlm.getVpn());
-			almDto.setStatus(itemAlm.getStatus());
+			almDto.setStatus(itemAlm.isStatus());
 			almDto.setTaskStatus(itemAlm.getTaskStatus());
 			almDto.setClosureStatus(itemAlm.getClosureStatus());
 
 			arrayAlm.add(almDto);
 		}
 		return arrayAlm;
+	}
+
+	public boolean salvarAlm(AlmDTO almDto) {
+		ALMTool almTool = new ALMTool(almDto);
+		ALMTool almTest = repositoryAlm.save(almTool);
+
+		if (almTest != null) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean deletarAlm(Long idAlm) {
+		if (repositoryAlm.existsById(idAlm)) {
+			repositoryAlm.deleteById(idAlm);
+			return true;
+		}
+		return false;
+
+	}
+
+	public boolean atualizarAlm(Long idAlm, AlmDTO newAlm) {
+		Optional<ALMTool> optionalAlm = repositoryAlm.findById(idAlm);
+		if (optionalAlm.isPresent()) {
+
+			ALMTool antigoAlm = optionalAlm.get();
+			antigoAlm.setIdAlmTool(idAlm);
+
+			if (newAlm.getNome() != null) {
+				antigoAlm.setNome(newAlm.getNome());
+			}
+
+			if (newAlm.getUrl() != null) {
+				antigoAlm.setUrl(newAlm.getUrl());
+			}
+			if (newAlm.getSenha() != null) {
+				antigoAlm.setSenha(newAlm.getSenha());
+			}
+			if (newAlm.getTipo() != null) {
+				antigoAlm.setTipo(newAlm.getTipo());
+			}
+			if (newAlm.getVpn() != null) {
+				antigoAlm.setVpn(newAlm.getVpn());
+			}
+			if (newAlm.isStatus()) {
+				antigoAlm.setStatus(newAlm.isStatus());
+			}
+			if (newAlm.getTaskStatus() != null) {
+				antigoAlm.setTaskStatus(newAlm.getTaskStatus());
+			}
+			if (newAlm.getClosureStatus() != null) {
+				antigoAlm.setClosureStatus(newAlm.getClosureStatus());
+			}
+
+			repositoryAlm.save(antigoAlm);
+			return true;
+
+		}
+
+		return false;
+
 	}
 
 //    public Optional<ALMTool> findById(Long id) {

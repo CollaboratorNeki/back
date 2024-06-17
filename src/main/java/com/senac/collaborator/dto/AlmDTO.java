@@ -1,8 +1,8 @@
 package com.senac.collaborator.dto;
 
-import jakarta.persistence.Column;
-
 public class AlmDTO {
+
+	private Long idAlmTool;
 
 	private String nome;
 
@@ -22,9 +22,10 @@ public class AlmDTO {
 
 	private String closureStatus;
 
-	public AlmDTO(String nome, String url, String login, String senha, String tipo, String vpn, boolean status,
-			String taskStatus, String closureStatus) {
+	public AlmDTO(Long idAlmTool, String nome, String url, String login, String senha, String tipo, String vpn,
+			boolean status, String taskStatus, String closureStatus) {
 		super();
+		this.idAlmTool = idAlmTool;
 		this.nome = nome;
 		this.url = url;
 		this.login = login;
@@ -35,8 +36,17 @@ public class AlmDTO {
 		this.taskStatus = taskStatus;
 		this.closureStatus = closureStatus;
 	}
-	
-	public AlmDTO() {}
+
+	public AlmDTO() {
+	}
+
+	public Long getIdAlmTool() {
+		return idAlmTool;
+	}
+
+	public void setIdAlmTool(Long idAlmTool) {
+		this.idAlmTool = idAlmTool;
+	}
 
 	public String getNome() {
 		return nome;
@@ -109,7 +119,5 @@ public class AlmDTO {
 	public void setClosureStatus(String closureStatus) {
 		this.closureStatus = closureStatus;
 	}
-	
-	
-	
+
 }

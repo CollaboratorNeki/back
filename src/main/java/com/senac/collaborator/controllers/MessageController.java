@@ -20,7 +20,7 @@ import com.senac.collaborator.services.MessageService;
 @RequestMapping("/messages")
 public class MessageController {
 	@Autowired
-	MessageService messageService; // @Autowired dando problema, foi necessário instanciar na mão
+	MessageService messageService; 
 
 	@GetMapping("/list_message")
 	public List<MessageDTO> listandoMensagens() {

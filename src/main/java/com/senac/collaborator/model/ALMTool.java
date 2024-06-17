@@ -2,6 +2,9 @@
 package com.senac.collaborator.model;
 
 import java.util.List;
+
+import com.senac.collaborator.dto.AlmDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -71,6 +74,19 @@ public class ALMTool {
 		this.task = task;
 		this.project = project;
 	}
+	
+	public ALMTool(AlmDTO almDto) {
+		this.idAlmTool = almDto.getIdAlmTool();
+		this.nome = almDto.getNome();
+		this.url = almDto.getUrl();
+		this.login = almDto.getLogin();
+		this.senha = almDto.getSenha();
+		this.tipo = almDto.getTipo();
+		this.vpn = almDto.getVpn();
+		this.status = almDto.isStatus();
+		this.taskStatus = almDto.getTaskStatus();
+		this.closureStatus = almDto.getClosureStatus();
+	}
 
 	public Long getIdAlmTool() {
 		return idAlmTool;
@@ -128,7 +144,7 @@ public class ALMTool {
 		this.vpn = vpn;
 	}
 
-	public boolean getStatus() {
+	public boolean isStatus() {
 		return status;
 	}
 
