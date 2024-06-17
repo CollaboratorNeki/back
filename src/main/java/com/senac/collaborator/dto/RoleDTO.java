@@ -42,6 +42,9 @@ public class RoleDTO {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
+
+	
+
 	
 	
 	
