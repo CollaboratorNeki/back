@@ -14,6 +14,12 @@ public class Message {
 	@Column(name ="conteudo")
 	private String conteudo;
 	
+	@Column(name ="tipo")
+	private String tipo;
+	
+	@Column(name ="acao")
+	private String acao;
+	
 	@Column(name ="data_envio")
 	private LocalDateTime dataEnvio;
 	
@@ -36,11 +42,13 @@ public class Message {
 	public Message() {}
 
 
-	public Message(Long idMessage, String conteudo, LocalDateTime dataEnvio, User idRemetente, User idDestinatario,
-			Task idTask) {
+	public Message(Long idMessage, String conteudo, String tipo, String acao, LocalDateTime dataEnvio, User idRemetente,
+			User idDestinatario, Task idTask) {
 		super();
 		this.idMessage = idMessage;
 		this.conteudo = conteudo;
+		this.tipo = tipo;
+		this.acao = acao;
 		this.dataEnvio = dataEnvio;
 		this.idRemetente = idRemetente;
 		this.idDestinatario = idDestinatario;
@@ -65,6 +73,26 @@ public class Message {
 
 	public void setConteudo(String conteudo) {
 		this.conteudo = conteudo;
+	}
+
+
+	public String getTipo() {
+		return tipo;
+	}
+
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+
+	public String getAcao() {
+		return acao;
+	}
+
+
+	public void setAcao(String acao) {
+		this.acao = acao;
 	}
 
 
@@ -106,9 +134,5 @@ public class Message {
 	public void setIdTask(Task idTask) {
 		this.idTask = idTask;
 	}
-	
-	
-	
-	
 
 }

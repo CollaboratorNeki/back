@@ -37,7 +37,7 @@ public class ALMTool {
 	private String vpn; 
 	
 	@Column(name="status" )
-	private String status; 
+	private boolean status; 
 	
 	@Column(name="task_status")
 	private String taskStatus; 
@@ -56,7 +56,7 @@ public class ALMTool {
 	public ALMTool() {}
 
 	public ALMTool(Long idAlmTool, String nome, String url, String login, String senha, String tipo, String vpn,
-			String status, String taskStatus, String closureStatus, List<Task> task, List<Project> project) {
+			boolean status, String taskStatus, String closureStatus, List<Task> task, List<Project> project) {
 		super();
 		this.idAlmTool = idAlmTool;
 		this.nome = nome;
@@ -128,11 +128,11 @@ public class ALMTool {
 		this.vpn = vpn;
 	}
 
-	public String getStatus() {
+	public boolean getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(boolean status) {
 		this.status = status;
 	}
 
