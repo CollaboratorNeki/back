@@ -1,10 +1,10 @@
 package com.senac.collaborator.services;
 
-import com.senac.collaborator.dto.MessageDTO;
+
 import com.senac.collaborator.dto.RoleDTO;
-import com.senac.collaborator.model.Message;
 import com.senac.collaborator.model.Role;
 import com.senac.collaborator.repositores.RoleRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +22,9 @@ public class RoleService {
         return roleRepository.findAll();
     }
     
+    public List<Role> findById(long idRole) {
+		return roleRepository.findById);
+	}
     
     public List<RoleDTO> listarRole(){
     	List<Role> listRole = roleRepository.findAll();
@@ -36,26 +39,17 @@ public class RoleService {
     	return listRoleDTO;
     	
     }
-    
-      
-    
-    
-    public Optional<Role> findById(Long id_role) {
-        return roleRepository.findById(id_role);
-    }
-
-    public Role save(Role role) {
-        return roleRepository.save(role);
-    }
 
     public void deleteById(Long idRole) {
         roleRepository.deleteById(idRole);
     }
 
-    public List<Role> findActiveRoles() {
+    public List<RoleDTO> findActiveRoles() {
         return roleRepository.findByStatus(true);
     }
-
+    
+  
+    
     public Role toggleStatus(Long id_role) {
         Role role = roleRepository.findById(id_role)
                 .orElseThrow(() -> new IllegalArgumentException("Role com ID " + id_role + " não encontrado."));
@@ -88,6 +82,7 @@ public class RoleService {
 		if (rTest != null) {
 			
 		}
+		
 		return true;
 	}
 	

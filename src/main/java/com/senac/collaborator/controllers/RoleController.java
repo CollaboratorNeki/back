@@ -26,23 +26,27 @@ public class RoleController {
         return roleService.listarRoles();
     }
     
+    // Listar roles ativos
+   @GetMapping("/active")
+   public List<RoleDTO> findActivRoles() {
+         return roleService.findActiveRoles();
+}
+   
+    
     // listando atributos nome, descricao e status
-    @GetMapping
+    @GetMapping("/listar_atributos")
     public List<RoleDTO> listarRole() {
         return roleService.listarRole();
     }
-
-    
-    
     
     // Buscar por ID
-    @GetMapping("/buscar/{id_role}")
+   /* @GetMapping("/buscar/{id_role}")
     public ResponseEntity<Role> getRoleById(@PathVariable Long id_role) {
         Role role = roleService.findById(id_role)
                 .orElseThrow(() -> new IllegalArgumentException("Role com ID " + id_role + " não encontrado."));
         return ResponseEntity.ok(role);
     }
-
+*/
     // Salvar novo
     @PostMapping("/cadastro_role")
     public ResponseEntity<String> cadastroRole(@RequestBody RoleDTO roleDto) {
@@ -53,14 +57,11 @@ public class RoleController {
     	return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cadastro de Funcoes falhou");
     	
     }
-    }
-
-
-   
+    }    
     // Atualizar existente
     @PutMapping("/atualizar/{id_role}")
-    public ResponseEntity<String> updateRole(@PathVariable Long id_role, @RequestBody Role role) {
-        boolean roleAtualizado = roleService.updateRole(id_role, role);
+    public ResponseEntity<String> updateRole(@PathVariable Long idRole, @RequestBody Role role) {
+        boolean roleAtualizado = roleService.updateRole(idRole, role);
         if (roleAtualizado) {
             return ResponseEntity.status(HttpStatus.OK).body("Role atualizado com sucesso!");
         }
@@ -68,6 +69,14 @@ public class RoleController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Falha ao atualizar o role!");
         }
     }
+
+    // Alternar status
+    @PutMapping("/toggle-status/{id_role}")
+    public ResponseEntity<Role> toggleStatus(@PathVariable Long idRole) {
+        Role role = roleService.toggleStatus(idRole);
+        return ResponseEntity.ok(role);
+    }
+
 
     // Deletar por ID
     @DeleteMapping("/deletar/{id_role}")
@@ -80,17 +89,6 @@ public class RoleController {
         }
     }
 
-    // Alternar status
-    @PutMapping("/toggle-status/{id_role}")
-    public ResponseEntity<Role> toggleStatus(@PathVariable Long id_role) {
-        Role role = roleService.toggleStatus(id_role);
-        return ResponseEntity.ok(role);
-    }
-
-    // Listar roles ativos
-    @GetMapping("/active")
-    public ResponseEntity<List<Role>> findActiveRoles() {
-        List<Role> roles = roleService.findActiveRoles();
-        return ResponseEntity.ok(roles);
-    }
+   
+   
 }
