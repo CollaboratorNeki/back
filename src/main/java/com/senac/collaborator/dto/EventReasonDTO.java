@@ -1,22 +1,17 @@
 package com.senac.collaborator.dto;
 
-import jakarta.persistence.Column;
-
 public class EventReasonDTO {
 
-	
+	private Long idEventReason;
 	private String nome;
-
 	private String descricao;
-	
-	
-	public EventReasonDTO () {
-		
+
+	public Long getIdEventReason() {
+		return idEventReason;
 	}
-	public EventReasonDTO(String nome, String descricao) {
-		super();
-		this.nome = nome;
-		this.descricao = descricao;
+
+	public void setIdEventReason(Long idEventReason) {
+		this.idEventReason = idEventReason;
 	}
 
 	public String getNome() {
@@ -34,6 +29,4 @@ public class EventReasonDTO {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
-
 }

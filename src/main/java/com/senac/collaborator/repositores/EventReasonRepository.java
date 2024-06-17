@@ -7,5 +7,4 @@ import com.senac.collaborator.model.EventReason;
 
 @Repository
 public interface EventReasonRepository extends JpaRepository<EventReason, Long> {
-
 }

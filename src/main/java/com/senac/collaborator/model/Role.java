@@ -9,6 +9,8 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.List;
 
+import com.senac.collaborator.dto.RoleDTO;
+
 @Entity
 @Table(name = "role")
 public class Role {
@@ -30,9 +32,7 @@ public class Role {
 //    @OneToMany(mappedBy = "idRole")
 //    private List<User> users;
 
-	public Role() {
-	}
-
+	
 	public Long getIdRole() {
 		return idRole;
 	}
@@ -44,6 +44,12 @@ public class Role {
 		this.descricao = descricao;
 		this.status = status;
 
+	}
+
+	public Role(RoleDTO roleDto) {
+	this.nome = roleDto.getDescricao();
+	this.descricao = roleDto.getDescricao();
+	this.status = roleDto.isStatus();
 	}
 
 	public String getNome() {

@@ -1,6 +1,8 @@
 package com.senac.collaborator.services;
 
+import com.senac.collaborator.dto.MessageDTO;
 import com.senac.collaborator.dto.RoleDTO;
+import com.senac.collaborator.model.Message;
 import com.senac.collaborator.model.Role;
 import com.senac.collaborator.repositores.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,9 +37,7 @@ public class RoleService {
     	
     }
     
-    
-    
-    
+      
     
     
     public Optional<Role> findById(Long id_role) {
@@ -79,4 +79,17 @@ public class RoleService {
         }
         return false;
     }
+
+
+	public boolean saveRoles(RoleDTO roleDto) {
+		Role role = new Role(roleDto);
+		Role rTest = roleRepository.save(role);
+		
+		if (rTest != null) {
+			
+		}
+		return true;
+	}
+	
+	
 }
