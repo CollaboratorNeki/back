@@ -10,8 +10,7 @@ import com.senac.collaborator.model.Role;
 
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
+
+	List<Role> findByStatus(boolean b);
     
-    List<Role> findByStatus(boolean status);
-    
-    Optional<Role> findById(Long id);
 }
