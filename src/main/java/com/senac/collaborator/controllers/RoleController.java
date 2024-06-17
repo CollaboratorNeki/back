@@ -18,17 +18,12 @@ public class RoleController {
     private RoleService roleService;
 
     // Listagem geral
-    @GetMapping("/listar")
+    @GetMapping("/listar_role")
     public List<RoleDTO> listAllRolesDtos() {
         return roleService.listarRole();
     }
     
-    /* // Listar roles ativos
-   @GetMapping("/active")
-   public List<RoleDTO> findActiveRoles() {
-         return roleService.findActiveRoles();
-}
-  */
+   
     // Salvar novo
     @PostMapping("/cadastro_role")
     public ResponseEntity<String> cadastroRole(@RequestBody RoleDTO roleDto) {
@@ -39,11 +34,12 @@ public class RoleController {
     	return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cadastro de Funcoes falhou");
     	
     }
+       
     }    
     // Atualizar existente
-    @PutMapping("/atualizar/{id_role}")
+    @PutMapping("/atualizar/{idRole}")
     public ResponseEntity<String> updateRole(@PathVariable Long idRole, @RequestBody RoleDTO newRole) {
-        boolean roleAtualizado = roleService.updateRole(idRole, newRole);
+        boolean roleAtualizado = roleService.atualizarRole(idRole, newRole);
         if (roleAtualizado) {
             return ResponseEntity.status(HttpStatus.OK).body("Role atualizado com sucesso!");
         }
@@ -53,20 +49,8 @@ public class RoleController {
     }
 
     
-    
-    
-    
-
-    // Alternar status
-   /* @PutMapping("/toggle-status/{id_role}")
-    public ResponseEntity<Role> toggleStatus(@PathVariable Long idRole) {
-        Role role = roleService.toggleStatus(idRole);
-        return ResponseEntity.ok(role);
-    }*/
-
-
     // Deletar por ID
-    @DeleteMapping("/deletar/{id_role}")
+    @DeleteMapping("/deletar/{idRole}")
     public ResponseEntity<String> deleteRole(@PathVariable Long idRole) {
       boolean roleDelete = roleService.deletarRole(idRole);
       if(roleDelete) {

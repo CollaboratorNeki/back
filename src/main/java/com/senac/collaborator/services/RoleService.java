@@ -7,7 +7,6 @@ import com.senac.collaborator.model.Role;
 import com.senac.collaborator.repositores.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -49,16 +48,16 @@ public class RoleService {
     
   
     
-    public Role toggleStatus(Long id_role) {
+   /* public Role toggleStatus(Long id_role) {
         Role role = roleRepository.findById(id_role)
                 .orElseThrow(() -> new IllegalArgumentException("Role com ID " + id_role + " não encontrado."));
         role.setStatus(!role.isStatus());
         return roleRepository.save(role);
-    }
+    }*/
 
     
     
-  public boolean updateRole(Long idRole, RoleDTO  newRole) {
+  public boolean atualizarRole(Long idRole, RoleDTO  newRole) {
 	  Optional<Role> optionalRole = roleRepository.findById(idRole);
 	  if(optionalRole.isPresent()) {
 		  
@@ -82,6 +81,8 @@ public class RoleService {
 	  }
       return false;
 }
+  
+  
   public boolean saveRoles(RoleDTO roleDto) {
 		Role role = new Role(roleDto);
 		Role rTest = roleRepository.save(role);

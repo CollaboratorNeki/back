@@ -37,6 +37,8 @@ public class Role {
 		return idRole;
 	}
 
+	public Role() {}
+	
 	public Role(Long idRole, String nome, String descricao, boolean status) {
 		super();
 		this.idRole = idRole;
