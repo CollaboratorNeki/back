@@ -1,7 +1,6 @@
 package com.senac.collaborator.dto;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import com.senac.collaborator.model.Message;
 

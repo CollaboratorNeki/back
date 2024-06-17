@@ -21,68 +21,58 @@ import com.senac.collaborator.services.EventReasonService;
 @RestController
 @RequestMapping("/event_reason")
 public class EventReasonController {
-    
-    @Autowired
-    private EventReasonService eventReasonService;
 
-    // Listagem geral
-    @GetMapping("/listar")
-    public List<EventReason> listarEventReasons() {
-        return eventReasonService.listarEventReasons();
-    }
-    
-    @GetMapping("/listarReasonEvent")
-    public List<EventReasonDTO> listarEventReasonsDTO() {
-        return eventReasonService.listarEventReasonsDTO();
-    }
-    
-    
-    
-    
-    
-    
+	@Autowired
+	private EventReasonService eventReasonService;
 
-    // Buscar por ID
-    @GetMapping("/buscar/{idEventReason}")
-    public ResponseEntity<EventReason> getEventReasonById(@PathVariable Long id_event_reason) {
-        EventReason eventReason = eventReasonService.getEventReasonById(id_event_reason);
-        if (eventReason != null) {
-            return new ResponseEntity<>(eventReason, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
+	// Listagem geral
+	@GetMapping("/listar")
+	public List<EventReason> listarEventReasons() {
+		return eventReasonService.listarEventReasons();
+	}
 
-    // Salvar novo
-    @PostMapping("/salvar")
-    public ResponseEntity<EventReason> createEventReason(@RequestBody EventReason eventReason) {
-        EventReason newEventReason = eventReasonService.createEventReason(eventReason);
-        if (newEventReason != null) {
-            return new ResponseEntity<>(newEventReason, HttpStatus.CREATED);
-        } else {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-    }
+	// Buscar por ID
+	@GetMapping("/buscar/{idEventReason}")
+	public ResponseEntity<EventReason> getEventReasonById(@PathVariable Long idEventReason) {
+		EventReason eventReason = eventReasonService.getEventReasonById(idEventReason);
+		if (eventReason != null) {
+			return new ResponseEntity<>(eventReason, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
 
-    // Atualizar existente
-    @PutMapping("/atualizar/{idEventReason}")
-    public ResponseEntity<String> updateEventReason(@PathVariable Long id_event_reason, @RequestBody EventReason eventReason) {
-        boolean eventReasonAtualizado = eventReasonService.updateEventReason(id_event_reason, eventReason);
-        if (eventReasonAtualizado) {
-            return ResponseEntity.status(HttpStatus.OK).body("Evento atualizado com sucesso!");
-        } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Falha ao atualizar o evento!");
-        }
-    }
+	// Salvar novo
+	@PostMapping("/salvar")
+	public ResponseEntity<EventReason> createEventReason(@RequestBody EventReason eventReason) {
+		EventReason newEventReason = eventReasonService.createEventReason(eventReason);
+		if (newEventReason != null) {
+			return new ResponseEntity<>(newEventReason, HttpStatus.CREATED);
+		} else {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+	}
 
-    // Deletar por ID
-    @DeleteMapping("/deletar/{idEventReason}")
-    public ResponseEntity<String> deleteEventReason(@PathVariable Long id_event_reason) {
-        Boolean eventReasonDeletado = eventReasonService.deleteEventReason(id_event_reason);
-        if (eventReasonDeletado) {
-            return ResponseEntity.status(HttpStatus.OK).body("Evento deletado com sucesso!");
-        } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Falha ao deletar o Evento!");
-        }
-    }
+	// Atualizar existente
+	@PutMapping("/atualizar/{idEventReason}")
+	public ResponseEntity<String> updateEventReason(@PathVariable Long idEventReason,
+			@RequestBody EventReasonDTO eventReasonDetails) {
+		boolean eventReasonAtualizado = eventReasonService.updateEventReason(idEventReason, eventReasonDetails);
+		if (eventReasonAtualizado) {
+			return ResponseEntity.status(HttpStatus.OK).body("Evento atualizado com sucesso!");
+		} else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Falha ao atualizar o evento!");
+		}
+	}
+
+	// Deletar por ID
+	@DeleteMapping("/deletar/{idEventReason}")
+	public ResponseEntity<String> deleteEventReason(@PathVariable Long idEventReason) {
+		boolean eventReasonDeletado = eventReasonService.deleteEventReason(idEventReason);
+		if (eventReasonDeletado) {
+			return ResponseEntity.status(HttpStatus.OK).body("Evento deletado com sucesso!");
+		} else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Falha ao deletar o Evento!");
+		}
+	}
 }
