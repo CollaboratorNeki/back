@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
-
 import com.senac.collaborator.dto.AlmDTO;
 import com.senac.collaborator.model.ALMTool;
 import com.senac.collaborator.services.ALMToolService;

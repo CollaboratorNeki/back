@@ -1,10 +1,10 @@
 package com.senac.collaborator.services;
 
 
+
 import com.senac.collaborator.dto.RoleDTO;
 import com.senac.collaborator.model.Role;
 import com.senac.collaborator.repositores.RoleRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,15 +17,8 @@ public class RoleService {
 
     @Autowired
     private RoleRepository roleRepository;
+    
 
-    public List<Role> listarRoles() {
-        return roleRepository.findAll();
-    }
-    
-    public List<Role> findById(long idRole) {
-		return roleRepository.findById);
-	}
-    
     public List<RoleDTO> listarRole(){
     	List<Role> listRole = roleRepository.findAll();
     	List<RoleDTO> listRoleDTO = new ArrayList<>();
@@ -39,14 +32,20 @@ public class RoleService {
     	return listRoleDTO;
     	
     }
+          
 
-    public void deleteById(Long idRole) {
-        roleRepository.deleteById(idRole);
-    }
+    public boolean deletarRole(Long idRole) {
+		if (roleRepository.existsById(idRole)) {
+			roleRepository.deleteById(idRole);
+			return true;
+		}
+		return false;
 
-    public List<RoleDTO> findActiveRoles() {
+	}
+
+   /* public List<RoleDTO> findActiveRoles() {
         return roleRepository.findByStatus(true);
-    }
+    }*/
     
   
     
@@ -57,25 +56,33 @@ public class RoleService {
         return roleRepository.save(role);
     }
 
-    public Boolean updateRole(Long id_role, Role roleDetails) {
-        Optional<Role> roleOptional = roleRepository.findById(id_role);
-        if (roleOptional.isPresent()) {
-            Role existingRole = roleOptional.get();
-            existingRole.setIdRole(id_role); // 
-            if (roleDetails.getNome() != null) {
-                existingRole.setNome(roleDetails.getNome());
-            }
-            if (roleDetails.getDescricao() != null) {
-                existingRole.setDescricao(roleDetails.getDescricao());
-            }
-            roleRepository.save(existingRole);
-            return true;
-        }
-        return false;
-    }
-
-
-	public boolean saveRoles(RoleDTO roleDto) {
+    
+    
+  public boolean updateRole(Long idRole, RoleDTO  newRole) {
+	  Optional<Role> optionalRole = roleRepository.findById(idRole);
+	  if(optionalRole.isPresent()) {
+		  
+		  Role antigoRole = optionalRole.get();		  
+		  antigoRole.setIdRole(idRole);
+		  
+		  if (newRole.getNome() != null) {
+		      antigoRole.setNome(newRole.getNome());
+		  }
+		      
+		   if (newRole.getDescricao() != null) {
+			   antigoRole.setDescricao(newRole.getDescricao());
+		   }
+		  
+		   if (newRole.isStatus()) {
+			   antigoRole.setStatus(newRole.isStatus());
+		   }
+		 
+		   roleRepository.save(antigoRole);
+		   return true;
+	  }
+      return false;
+}
+  public boolean saveRoles(RoleDTO roleDto) {
 		Role role = new Role(roleDto);
 		Role rTest = roleRepository.save(role);
 		
