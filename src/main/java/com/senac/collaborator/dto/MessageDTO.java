@@ -1,6 +1,6 @@
 package com.senac.collaborator.dto;
 
-import java.time.LocalDate;
+
 
 import com.senac.collaborator.model.Message;
 
@@ -8,54 +8,81 @@ public class MessageDTO {
 
 	private String conteudo;
 
-	private LocalDate dataEnvio;
+	private Long dataInicio;
+	
+	private Long dataFim;
 
 	private String tipo;
 
-	private String acao;
 
-	public MessageDTO(Message message) {
+
+	
+	public MessageDTO() {}
+	
+	public MessageDTO(String conteudo, Long dataInicio, Long dataFim, String tipo) {
 		super();
-		this.conteudo = message.getConteudo();
-		this.dataEnvio = message.getDataEnvio();
-		this.tipo = message.getTipo();
-		this.acao = message.getAcao();
+		this.conteudo = conteudo;
+		this.dataInicio = dataInicio;
+		this.dataFim = dataFim;
+		this.tipo = tipo;
 	}
 
-	public MessageDTO() {
-	}
+
 
 	public String getConteudo() {
 		return conteudo;
 	}
 
+
+
 	public void setConteudo(String conteudo) {
 		this.conteudo = conteudo;
 	}
 
-	public LocalDate getDataEnvio() {
-		return dataEnvio;
+
+
+	public Long getDataInicio() {
+		return dataInicio;
 	}
 
-	public void setDataEnvio(LocalDate dataEnvio) {
-		this.dataEnvio = dataEnvio;
 
+
+	public void setDataInicio(Long dataInicio) {
+		this.dataInicio = dataInicio;
 	}
 
-	public String getAcao() {
-		return acao;
+
+
+	public Long getDataFim() {
+		return dataFim;
 	}
 
-	public void setAcao(String acao) {
-		this.acao = acao;
+
+
+	public void setDataFim(Long dataFim) {
+		this.dataFim = dataFim;
 	}
+
+
 
 	public String getTipo() {
 		return tipo;
 	}
 
+
+
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
-
 	}
+	
+	
+	
+	
+	
 }
+ 
+
+
+
+
+

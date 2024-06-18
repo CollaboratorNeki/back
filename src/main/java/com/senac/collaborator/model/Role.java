@@ -29,7 +29,7 @@ public class Role {
 	@Column(name = "status")
 	private boolean status;
 
-//    @OneToMany(mappedBy = "idRole")
+//    @OneToMany(mappedBy = "idRole") 
 //    private List<User> users;
 
 	

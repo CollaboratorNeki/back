@@ -1,7 +1,7 @@
 package com.senac.collaborator.model;
 
 import jakarta.persistence.*;
-import java.time.*;
+
 
 import com.senac.collaborator.dto.MessageDTO;
 
@@ -19,11 +19,12 @@ public class Message {
 	@Column(name = "tipo")
 	private String tipo;
 
-	@Column(name = "acao")
-	private String acao;
 
-	@Column(name = "data_envio")
-	private LocalDate dataEnvio;
+	@Column(name = "data_inicio")
+	private Long dataInicio;
+	
+	@Column(name = "data_fim")
+	private Long dataFim;
 
 	@ManyToOne
 	@JoinColumn(name = "id_remetente")
@@ -40,25 +41,28 @@ public class Message {
 	public Message() {
 	}
 
-	public Message(Long idMessage, String conteudo, String tipo, String acao, LocalDate dataEnvio, User idRemetente,
-			User idDestinatario, Task idTask) {
+	public Message(Long idMessage, String conteudo, String tipo, String acao, Long dataInicio, Long dataFim,
+			User idRemetente, User idDestinatario, Task idTask) {
 		super();
 		this.idMessage = idMessage;
 		this.conteudo = conteudo;
 		this.tipo = tipo;
-		this.acao = acao;
-		this.dataEnvio = dataEnvio;
+		this.dataInicio = dataInicio;
+		this.dataFim = dataFim;
 		this.idRemetente = idRemetente;
 		this.idDestinatario = idDestinatario;
 		this.idTask = idTask;
 	}
 
 	public Message(MessageDTO messageDto) {
-		this.acao = messageDto.getAcao();
-		this.conteudo = messageDto.getAcao();
-		this.dataEnvio = messageDto.getDataEnvio();
+		super();
+		this.conteudo = messageDto.getConteudo();
 		this.tipo = messageDto.getTipo();
-	}
+		this.tipo = messageDto.getTipo();
+		this.dataInicio = messageDto.getDataInicio();
+		this.dataFim = messageDto.getDataFim();
+	
+		}
 
 	public Long getIdMessage() {
 		return idMessage;
@@ -84,20 +88,20 @@ public class Message {
 		this.tipo = tipo;
 	}
 
-	public String getAcao() {
-		return acao;
+	public Long getDataInicio() {
+		return dataInicio;
 	}
 
-	public void setAcao(String acao) {
-		this.acao = acao;
+	public void setDataInicio(Long dataInicio) {
+		this.dataInicio = dataInicio;
 	}
 
-	public LocalDate getDataEnvio() {
-		return dataEnvio;
+	public Long getDataFim() {
+		return dataFim;
 	}
 
-	public void setDataEnvio(LocalDate dataEnvio) {
-		this.dataEnvio = dataEnvio;
+	public void setDataFim(Long dataFim) {
+		this.dataFim = dataFim;
 	}
 
 	public User getIdRemetente() {
@@ -123,5 +127,11 @@ public class Message {
 	public void setIdTask(Task idTask) {
 		this.idTask = idTask;
 	}
+
+	
+
+
+	
+
 
 }

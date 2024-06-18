@@ -21,9 +21,10 @@ public class MessageService {
 		for (Message messageDtoItem : message) {
 			MessageDTO messageDto = new MessageDTO();
 			messageDto.setConteudo(messageDtoItem.getConteudo());
-			messageDto.setDataEnvio(messageDtoItem.getDataEnvio());
+			messageDto.setDataInicio(messageDtoItem.getDataInicio());
+			messageDto.setDataFim(messageDtoItem.getDataFim());
 			messageDto.setTipo(messageDtoItem.getTipo());
-			messageDto.setAcao(messageDtoItem.getAcao());
+		
 
 			messagesDto.add(messageDto);
 
