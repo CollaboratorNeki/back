@@ -2,15 +2,20 @@ package com.senac.collaborator.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.senac.collaborator.dto.MessageDTO;
+import com.senac.collaborator.dto.RoleDTO;
 import com.senac.collaborator.model.Message;
+import com.senac.collaborator.model.Role;
 import com.senac.collaborator.repositores.MessageRepository;
+
 @Service
 public class MessageService {
+	
 	@Autowired
 	MessageRepository messageRepository;
 
@@ -44,5 +49,39 @@ public class MessageService {
 
 		return false;
 	}
-
+	
+	
+	public boolean deletarMessage(Long idMessage) {
+		if (messageRepository.existsById(idMessage)) {
+			messageRepository.deleteById(idMessage);
+			return true;
+		}
+		return false;
+	}
+	
+public boolean atualizarMessage(Long idMessage, MessageDTO newMessage ) {
+	Optional<Message> optionalMessage = messageRepository.findById(idMessage) ;
+	if(optionalMessage.isPresent()) {
+		
+		Message antigoMessage = optionalMessage.get();
+		antigoMessage.setIdMessage(idMessage);
+		
+		if(newMessage.getConteudo() != null) {
+		    antigoMessage.setConteudo(newMessage.getConteudo());
+		}
+		if(newMessage.getDataInicio() != null) {
+		    antigoMessage.setDataInicio(newMessage.getDataInicio());
+		}
+		if(newMessage.getDataFim() != null) {
+		    antigoMessage.setDataFim(newMessage.getDataFim());
+		}
+		if(newMessage.getTipo() != null) {
+		    antigoMessage.setTipo(newMessage.getTipo());
+		}
+        messageRepository.save(antigoMessage);
+        return true;
+	}
+	return false;
+}
+	
 }

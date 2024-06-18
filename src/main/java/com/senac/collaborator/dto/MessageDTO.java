@@ -2,10 +2,13 @@ package com.senac.collaborator.dto;
 
 
 
+
 import com.senac.collaborator.model.Message;
 
 public class MessageDTO {
 
+	private Long idMessage; 
+	
 	private String conteudo;
 
 	private Long dataInicio;
@@ -18,14 +21,33 @@ public class MessageDTO {
 
 	
 	public MessageDTO() {}
-	
-	public MessageDTO(String conteudo, Long dataInicio, Long dataFim, String tipo) {
+
+
+
+
+	public MessageDTO(Long idMessage, String conteudo, Long dataInicio, Long dataFim, String tipo) {
 		super();
+		this.idMessage = idMessage;
 		this.conteudo = conteudo;
 		this.dataInicio = dataInicio;
 		this.dataFim = dataFim;
 		this.tipo = tipo;
 	}
+
+
+
+
+	public Long getIdMessage() {
+		return idMessage;
+	}
+
+
+
+
+	public void setIdMessage(Long idMessage) {
+		this.idMessage = idMessage;
+	}
+
 
 
 
@@ -35,9 +57,11 @@ public class MessageDTO {
 
 
 
+
 	public void setConteudo(String conteudo) {
 		this.conteudo = conteudo;
 	}
+
 
 
 
@@ -47,9 +71,11 @@ public class MessageDTO {
 
 
 
+
 	public void setDataInicio(Long dataInicio) {
 		this.dataInicio = dataInicio;
 	}
+
 
 
 
@@ -59,9 +85,11 @@ public class MessageDTO {
 
 
 
+
 	public void setDataFim(Long dataFim) {
 		this.dataFim = dataFim;
 	}
+
 
 
 
@@ -71,9 +99,12 @@ public class MessageDTO {
 
 
 
+
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+	
+	
 	
 	
 	
