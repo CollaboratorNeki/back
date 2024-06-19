@@ -3,6 +3,8 @@ package com.senac.collaborator.dto;
 
 
 
+import java.time.LocalDate;
+
 import com.senac.collaborator.model.Message;
 
 public class MessageDTO {
@@ -11,21 +13,19 @@ public class MessageDTO {
 	
 	private String conteudo;
 
-	private Long dataInicio;
+	private LocalDate dataInicio;
 	
-	private Long dataFim;
+	private LocalDate dataFim;
 
 	private String tipo;
 
 
 
 	
-	public MessageDTO() {}
 
+public MessageDTO() {}
 
-
-
-	public MessageDTO(Long idMessage, String conteudo, Long dataInicio, Long dataFim, String tipo) {
+	public MessageDTO(Long idMessage, String conteudo, LocalDate dataInicio, LocalDate dataFim, String tipo) {
 		super();
 		this.idMessage = idMessage;
 		this.conteudo = conteudo;
@@ -65,28 +65,28 @@ public class MessageDTO {
 
 
 
-	public Long getDataInicio() {
+	public LocalDate getDataInicio() {
 		return dataInicio;
 	}
 
 
 
 
-	public void setDataInicio(Long dataInicio) {
+	public void setDataInicio(LocalDate dataInicio) {
 		this.dataInicio = dataInicio;
 	}
 
 
 
 
-	public Long getDataFim() {
+	public LocalDate getDataFim() {
 		return dataFim;
 	}
 
 
 
 
-	public void setDataFim(Long dataFim) {
+	public void setDataFim(LocalDate dataFim) {
 		this.dataFim = dataFim;
 	}
 
@@ -103,7 +103,10 @@ public class MessageDTO {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	
+
+
+
+
 	
 	
 	

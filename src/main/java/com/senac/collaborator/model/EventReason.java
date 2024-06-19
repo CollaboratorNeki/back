@@ -1,4 +1,4 @@
-package com.senac.collaborator.model;
+ package com.senac.collaborator.model;
 
 import java.util.List;
 
@@ -27,6 +27,7 @@ public class EventReason {
 	@Column(name = "status")
 	private boolean status;
 
+	/*corrigir relacionamento*/
 	@OneToMany(mappedBy = "idEventReason")
 	private List<User> users;
 

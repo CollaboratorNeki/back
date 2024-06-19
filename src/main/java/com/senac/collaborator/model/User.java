@@ -46,11 +46,7 @@ public class User {
 	@OneToMany(mappedBy = "idResponsavel")
 	private List<Task> id_responsavel;
 
-	@OneToMany(mappedBy = "idRemetente")
-	private List<Message> message;
 
-	@OneToMany(mappedBy = "idDestinatario")
-	private List<Message> idDestinatario;
 
 	public User() {
 	}

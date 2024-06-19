@@ -9,6 +9,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -27,10 +29,10 @@ public class Task {
 	private String descricao;
 
 	@Column(name = "data_inicio")
-	private int dataInicio;
+	private LocalDate dataInicio;
 
 	@Column(name = "dat_fim")
-	private int dataFim;
+	private LocalDate dataFim;
 
 	@Column(name = "status")
 	private String status;
@@ -59,7 +61,9 @@ public class Task {
 	public Task() {
 	}
 
-	public Task(long idTask, String nome, String descricao, int dataInicio, int dataFim, String status,
+
+
+	public Task(long idTask, String nome, String descricao, LocalDate dataInicio, LocalDate dataFim, String status,
 			String esforcoEstimado, String esforcoReal, User idResponsavel, Project project, ALMTool idAlmTool,
 			List<Task> idTaskList) {
 		super();
@@ -77,100 +81,152 @@ public class Task {
 		this.idTaskList = idTaskList;
 	}
 
+
+
 	public long getIdTask() {
 		return idTask;
 	}
+
+
 
 	public void setIdTask(long idTask) {
 		this.idTask = idTask;
 	}
 
+
+
 	public String getNome() {
 		return nome;
 	}
+
+
 
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
+
+
 	public String getDescricao() {
 		return descricao;
 	}
+
+
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
 
-	public int getDataInicio() {
+
+
+	public LocalDate getDataInicio() {
 		return dataInicio;
 	}
 
-	public void setDataInicio(int dataInicio) {
+
+
+	public void setDataInicio(LocalDate dataInicio) {
 		this.dataInicio = dataInicio;
 	}
 
-	public int getDataFim() {
+
+
+	public LocalDate getDataFim() {
 		return dataFim;
 	}
 
-	public void setDataFim(int dataFim) {
+
+
+	public void setDataFim(LocalDate dataFim) {
 		this.dataFim = dataFim;
 	}
+
+
 
 	public String getStatus() {
 		return status;
 	}
 
+
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+
 
 	public String getEsforcoEstimado() {
 		return esforcoEstimado;
 	}
 
+
+
 	public void setEsforcoEstimado(String esforcoEstimado) {
 		this.esforcoEstimado = esforcoEstimado;
 	}
+
+
 
 	public String getEsforcoReal() {
 		return esforcoReal;
 	}
 
+
+
 	public void setEsforcoReal(String esforcoReal) {
 		this.esforcoReal = esforcoReal;
 	}
+
+
 
 	public User getIdResponsavel() {
 		return idResponsavel;
 	}
 
+
+
 	public void setIdResponsavel(User idResponsavel) {
 		this.idResponsavel = idResponsavel;
 	}
+
+
 
 	public Project getProject() {
 		return project;
 	}
 
+
+
 	public void setProject(Project project) {
 		this.project = project;
 	}
+
+
 
 	public ALMTool getIdAlmTool() {
 		return idAlmTool;
 	}
 
+
+
 	public void setIdAlmTool(ALMTool idAlmTool) {
 		this.idAlmTool = idAlmTool;
 	}
+
+
 
 	public List<Task> getIdTaskList() {
 		return idTaskList;
 	}
 
+
+
 	public void setIdTaskList(List<Task> idTaskList) {
 		this.idTaskList = idTaskList;
 	}
+
+
+
+
 
 }

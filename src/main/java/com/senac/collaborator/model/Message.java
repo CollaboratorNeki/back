@@ -2,6 +2,7 @@ package com.senac.collaborator.model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 
 import com.senac.collaborator.dto.MessageDTO;
 
@@ -21,19 +22,12 @@ public class Message {
 
 
 	@Column(name = "data_inicio")
-	private Long dataInicio;
+	private LocalDate dataInicio;
 	
 	@Column(name = "data_fim")
-	private Long dataFim;
+	private LocalDate dataFim;
 
-	@ManyToOne
-	@JoinColumn(name = "id_remetente")
-	private User idRemetente;
-
-	@ManyToOne
-	@JoinColumn(name = "id_destinatario")
-	private User idDestinatario;
-
+	
 	@ManyToOne
 	@JoinColumn(name = "id_task")
 	private Task idTask;
@@ -41,28 +35,23 @@ public class Message {
 	public Message() {
 	}
 
-	public Message(Long idMessage, String conteudo, String tipo, String acao, Long dataInicio, Long dataFim,
-			User idRemetente, User idDestinatario, Task idTask) {
+
+	public Message(Long idMessage, String conteudo, String tipo, LocalDate dataInicio, LocalDate dataFim, Task idTask) {
 		super();
 		this.idMessage = idMessage;
 		this.conteudo = conteudo;
 		this.tipo = tipo;
 		this.dataInicio = dataInicio;
 		this.dataFim = dataFim;
-		this.idRemetente = idRemetente;
-		this.idDestinatario = idDestinatario;
 		this.idTask = idTask;
 	}
 
 	public Message(MessageDTO messageDto) {
-		super();
+		this.idMessage = messageDto.getIdMessage();
 		this.conteudo = messageDto.getConteudo();
-		this.tipo = messageDto.getTipo();
-		this.tipo = messageDto.getTipo();
 		this.dataInicio = messageDto.getDataInicio();
 		this.dataFim = messageDto.getDataFim();
-	
-		}
+	}
 
 	public Long getIdMessage() {
 		return idMessage;
@@ -88,36 +77,20 @@ public class Message {
 		this.tipo = tipo;
 	}
 
-	public Long getDataInicio() {
+	public LocalDate getDataInicio() {
 		return dataInicio;
 	}
 
-	public void setDataInicio(Long dataInicio) {
+	public void setDataInicio(LocalDate dataInicio) {
 		this.dataInicio = dataInicio;
 	}
 
-	public Long getDataFim() {
+	public LocalDate getDataFim() {
 		return dataFim;
 	}
 
-	public void setDataFim(Long dataFim) {
+	public void setDataFim(LocalDate dataFim) {
 		this.dataFim = dataFim;
-	}
-
-	public User getIdRemetente() {
-		return idRemetente;
-	}
-
-	public void setIdRemetente(User idRemetente) {
-		this.idRemetente = idRemetente;
-	}
-
-	public User getIdDestinatario() {
-		return idDestinatario;
-	}
-
-	public void setIdDestinatario(User idDestinatario) {
-		this.idDestinatario = idDestinatario;
 	}
 
 	public Task getIdTask() {
@@ -128,6 +101,7 @@ public class Message {
 		this.idTask = idTask;
 	}
 
+	
 	
 
 
