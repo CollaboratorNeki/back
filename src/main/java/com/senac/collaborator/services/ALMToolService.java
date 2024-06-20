@@ -72,6 +72,10 @@ public class ALMToolService {
 				antigoAlm.setIdAlmTool(newAlm.getIdAlmTool());
 			}
 			
+			if(newAlm.getLogin() != null) {
+				antigoAlm.setLogin(newAlm.getLogin());
+			}
+			
 			if (newAlm.getUrl() != null) {
 				antigoAlm.setUrl(newAlm.getUrl());
 			}
@@ -84,7 +88,7 @@ public class ALMToolService {
 			if (newAlm.getVpn() != null) {
 				antigoAlm.setVpn(newAlm.getVpn());
 			}
-			if (newAlm.isStatus()) {
+			if (newAlm.isStatus() != optionalAlm.get().isStatus()) {
 				antigoAlm.setStatus(newAlm.isStatus());
 			}
 			if (newAlm.getTaskStatus() != null) {

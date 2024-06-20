@@ -43,7 +43,7 @@ public class ALMToolController {
 
 	}
 	
-	@PutMapping("/alterar_alm/{idAlm}")
+	@PatchMapping("/alterar_alm/{idAlm}")
 	public ResponseEntity<String> alterarAlm(@PathVariable Long idAlm, @RequestBody AlmDTO newAlm){
 		boolean almUpdate = almToolService.atualizarAlm(idAlm, newAlm);
 		if(almUpdate) {
