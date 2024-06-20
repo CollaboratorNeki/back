@@ -22,6 +22,7 @@ public class ALMToolService {
 		List<AlmDTO> arrayAlm = new ArrayList<>();
 		for (ALMTool itemAlm : listAlm) {
 			AlmDTO almDto = new AlmDTO();
+			almDto.setIdAlmTool(itemAlm.getIdAlmTool());
 			almDto.setNome(itemAlm.getNome());
 			almDto.setUrl(itemAlm.getUrl());
 			almDto.setLogin(itemAlm.getLogin());
@@ -66,7 +67,11 @@ public class ALMToolService {
 			if (newAlm.getNome() != null) {
 				antigoAlm.setNome(newAlm.getNome());
 			}
-
+			
+			if(newAlm.getIdAlmTool() != null) {
+				antigoAlm.setIdAlmTool(newAlm.getIdAlmTool());
+			}
+			
 			if (newAlm.getUrl() != null) {
 				antigoAlm.setUrl(newAlm.getUrl());
 			}
