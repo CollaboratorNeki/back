@@ -33,9 +33,9 @@ public class User {
 	@Column(name = "senha")
 	private long senha;
 
-	@ManyToOne
+	/*@ManyToOne
 	@JoinColumn(name = "id_event_reason")
-	private EventReason idEventReason;
+	private EventReason idEventReason;*/
 
 //	@ManyToOne
 //	@JoinColumn(name = "id_role")

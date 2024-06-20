@@ -2,6 +2,8 @@
 
 import java.util.List;
 
+import com.senac.collaborator.dto.EventReasonDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,20 +29,27 @@ public class EventReason {
 	@Column(name = "status")
 	private boolean status;
 
-	/*corrigir relacionamento*/
+	 /*corrigir relacionamento
 	@OneToMany(mappedBy = "idEventReason")
-	private List<User> users;
+	private List<User> users;*/
 
 	public EventReason() {
 	}
 
+	public EventReason(EventReasonDTO eventReasonDto) {
+		this.idEventReason = eventReasonDto.getIdEventReason();
+		this.nome = eventReasonDto.getNome();
+		this.descricao = eventReasonDto.getDescricao();
+		this.status = eventReasonDto.isStatus();
+	}
+	
 	public EventReason(Long idEventReason, String nome, String descricao, boolean status, List<User> users) {
 		super();
 		this.idEventReason = idEventReason;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.status = status;
-		this.users = users;
+	
 	}
 
 	
@@ -76,13 +85,7 @@ public class EventReason {
 		this.status = status;
 	}
 
-	public List<User> getUsers() {
-		return users;
-	}
 
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
 
 
 

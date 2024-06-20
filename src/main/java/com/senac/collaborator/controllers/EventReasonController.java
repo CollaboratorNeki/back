@@ -55,7 +55,7 @@ public class EventReasonController {
 
 	// Atualizar existente
 	@PutMapping("/atualizar/{idEventReason}")
-	public ResponseEntity<String> updateEventReason(@PathVariable Long idEventReason,
+	public ResponseEntity<String> atualizarEventReason(@PathVariable Long idEventReason,
 			@RequestBody EventReasonDTO eventReasonDetails) {
 		boolean eventReasonAtualizado = eventReasonService.updateEventReason(idEventReason, eventReasonDetails);
 		if (eventReasonAtualizado) {
