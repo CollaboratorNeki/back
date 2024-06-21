@@ -1,17 +1,12 @@
 package com.senac.collaborator.dto;
 
-
 public class RoleDTO {
 
 	private Long idRole;
-	
 	private String nome;
-
 	private String descricao;
-
 	private boolean status;
 
-	
 	public RoleDTO(Long idRole, String nome, String descricao, boolean status) {
 		super();
 		this.idRole = idRole;
@@ -20,7 +15,16 @@ public class RoleDTO {
 		this.status = status;
 	}
 
-	public RoleDTO() {}
+	public RoleDTO() {
+	}
+
+	public Long getIdRole() {
+		return idRole;
+	}
+
+	public void setIdRole(Long idRole) {
+		this.idRole = idRole;
+	}
 
 	public String getNome() {
 		return nome;
@@ -45,18 +49,4 @@ public class RoleDTO {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-
-	public Long getIdRole() {
-		return idRole;
-	}
-
-	public void setIdRole(Long idRole) {
-		this.idRole = idRole;
-	}
-
-	
-
-	
-	
-	
 }
