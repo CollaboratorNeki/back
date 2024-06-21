@@ -1,6 +1,4 @@
- package com.senac.collaborator.model;
-
-import java.util.List;
+package com.senac.collaborator.model;
 
 import com.senac.collaborator.dto.EventReasonDTO;
 
@@ -28,10 +26,6 @@ public class EventReason {
 	@Column(name = "status")
 	private boolean status;
 
-	 /*corrigir relacionamento
-	@OneToMany(mappedBy = "idEventReason")
-	private List<User> users;*/
-
 	public EventReason() {
 	}
 
@@ -41,17 +35,7 @@ public class EventReason {
 		this.descricao = eventReasonDto.getDescricao();
 		this.status = eventReasonDto.isStatus();
 	}
-	
-	public EventReason(Long idEventReason, String nome, String descricao, boolean status, List<User> users) {
-		super();
-		this.idEventReason = idEventReason;
-		this.nome = nome;
-		this.descricao = descricao;
-		this.status = status;
-	
-	}
 
-	
 	public Long getIdEventReason() {
 		return idEventReason;
 	}
@@ -84,8 +68,5 @@ public class EventReason {
 		this.status = status;
 	}
 
-
-
-
-
+	// Getters and Setters
 }

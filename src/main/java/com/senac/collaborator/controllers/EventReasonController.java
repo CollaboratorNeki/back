@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,19 +21,17 @@ import com.senac.collaborator.services.EventReasonService;
 
 @RestController
 @RequestMapping("/event_reason")
+@CrossOrigin(origins = "http://localhost:5173") // Adicione a anotação @CrossOrigin aqui
 public class EventReasonController {
-	
+
 	@Autowired
 	private EventReasonService eventReasonService;
 
-	// Listagem geral
 	@GetMapping("/listar")
 	public List<EventReason> listarEventReasons() {
 		return eventReasonService.listarEventReasons();
 	}
 
-
-	// Salvar novo
 	@PostMapping("/salvar")
 	public ResponseEntity<EventReason> createEventReason(@RequestBody EventReason eventReason) {
 		EventReason newEventReason = eventReasonService.createEventReason(eventReason);
@@ -43,7 +42,6 @@ public class EventReasonController {
 		}
 	}
 
-	// Atualizar existente
 	@PutMapping("/atualizar/{idEventReason}")
 	public ResponseEntity<String> atualizarEventReason(@PathVariable Long idEventReason,
 			@RequestBody EventReasonDTO eventReasonDetails) {
@@ -55,7 +53,6 @@ public class EventReasonController {
 		}
 	}
 
-	// Deletar por ID
 	@DeleteMapping("/deletar/{idEventReason}")
 	public ResponseEntity<String> deletarEventReason(@PathVariable Long idEventReason) {
 		boolean eventReasonDeletado = eventReasonService.deleteEventReason(idEventReason);
