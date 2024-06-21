@@ -10,16 +10,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebMvc
 public class CorsConfig implements WebMvcConfigurer {
 
-    @Value("${prop.cors.dev-url}")
-    private String devUrl;
+	@Value("${prop.cors.dev-url}")
+	private String devUrl;
 
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
+	@Override
+	public void addCorsMappings(CorsRegistry registry) {
 
-        registry.addMapping("/*")
-                .allowedOriginPatterns(devUrl, "http://localhost:5173/")
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH").allowedHeaders("")
-                .maxAge(3600);
-    }
+		registry.addMapping("/**").allowedOriginPatterns(devUrl, "http://localhost:5173")
+				.allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH").allowedHeaders("*").maxAge(3600)
+				.allowCredentials(true);
+	}
 
 }
