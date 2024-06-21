@@ -21,7 +21,7 @@ import com.senac.collaborator.services.EventReasonService;
 @RestController
 @RequestMapping("/event_reason")
 public class EventReasonController {
-
+	
 	@Autowired
 	private EventReasonService eventReasonService;
 
@@ -31,16 +31,6 @@ public class EventReasonController {
 		return eventReasonService.listarEventReasons();
 	}
 
-	// Buscar por ID
-	@GetMapping("/buscar/{idEventReason}")
-	public ResponseEntity<EventReason> getEventReasonById(@PathVariable Long idEventReason) {
-		EventReason eventReason = eventReasonService.getEventReasonById(idEventReason);
-		if (eventReason != null) {
-			return new ResponseEntity<>(eventReason, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-	}
 
 	// Salvar novo
 	@PostMapping("/salvar")
@@ -67,7 +57,7 @@ public class EventReasonController {
 
 	// Deletar por ID
 	@DeleteMapping("/deletar/{idEventReason}")
-	public ResponseEntity<String> deleteEventReason(@PathVariable Long idEventReason) {
+	public ResponseEntity<String> deletarEventReason(@PathVariable Long idEventReason) {
 		boolean eventReasonDeletado = eventReasonService.deleteEventReason(idEventReason);
 		if (eventReasonDeletado) {
 			return ResponseEntity.status(HttpStatus.OK).body("Evento deletado com sucesso!");
