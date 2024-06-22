@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -42,7 +43,7 @@ public class EventReasonController {
 		}
 	}
 
-	@PutMapping("/atualizar/{idEventReason}")
+	@PatchMapping("/atualizar/{idEventReason}")
 	public ResponseEntity<String> atualizarEventReason(@PathVariable Long idEventReason,
 			@RequestBody EventReasonDTO eventReasonDetails) {
 		boolean eventReasonAtualizado = eventReasonService.updateEventReason(idEventReason, eventReasonDetails);
