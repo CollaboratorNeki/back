@@ -2,6 +2,8 @@ package com.senac.collaborator.model;
 
 import java.util.List;
 
+import com.senac.collaborator.dto.ClientDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,12 +23,20 @@ public class Client {
 	@Column(name ="nome")
 	private String nome;
 
-	@Column(name="contato")
-	private String contato;
+	@Column(name="telefone")
+	private Long telefone;
 
 	@Column(name="email")
 	private String email;
+	
+	@Column(name="documento")
+	private String documento;
+	
+	@Column(name="codigo_externo")
+	private String codigoExterno;
+	
 
+	
 	
 	
 	 @OneToMany
@@ -35,14 +45,31 @@ public class Client {
 	
 	
 	public Client () {}
-	
-	public Client(Long idClient, String nome, String contato, String email) {
+
+
+
+	public Client(Long idClient, String nome, Long telefone, String email, String documento, String codigoExterno,
+			List<Project> project) {
 		super();
 		this.idClient = idClient;
 		this.nome = nome;
-		this.contato = contato;
+		this.telefone = telefone;
 		this.email = email;
+		this.documento = documento;
+		this.codigoExterno = codigoExterno;
+		this.project = project;
 	}
+
+
+
+	public Client(ClientDTO clientDto) {
+		this.nome = clientDto.getNome();
+		this.telefone = clientDto.getTelefone();
+		this.email = clientDto.getEmail();
+		this.documento = clientDto.getDocumento();
+		this.codigoExterno = clientDto.getCodigoExterno();
+	}
+
 
 
 	public Long getIdClient() {
@@ -50,9 +77,11 @@ public class Client {
 	}
 
 
+
 	public void setIdClient(Long idClient) {
 		this.idClient = idClient;
 	}
+
 
 
 	public String getNome() {
@@ -60,19 +89,23 @@ public class Client {
 	}
 
 
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
 
-	public String getContato() {
-		return contato;
+
+	public Long getTelefone() {
+		return telefone;
 	}
 
 
-	public void setContato(String contato) {
-		this.contato = contato;
+
+	public void setTelefone(Long telefone) {
+		this.telefone = telefone;
 	}
+
 
 
 	public String getEmail() {
@@ -80,13 +113,50 @@ public class Client {
 	}
 
 
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+
+
+	public String getDocumento() {
+		return documento;
+	}
+
+
+
+	public void setDocumento(String documento) {
+		this.documento = documento;
+	}
+
+
+
+	public String getCodigoExterno() {
+		return codigoExterno;
+	}
+
+
+
+	public void setCodigoExterno(String codigoExterno) {
+		this.codigoExterno = codigoExterno;
+	}
+
+
+
+	public List<Project> getProject() {
+		return project;
+	}
+
+
+
+	public void setProject(List<Project> project) {
+		this.project = project;
+	}
+
+
+
 	
-	
-	
-	
-	
+
 
 }
