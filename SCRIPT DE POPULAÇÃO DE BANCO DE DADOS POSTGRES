@@ -1,154 +1,54 @@
--- *************************************************************************************************************************************
---   COMO EXECUTAR ESTE SCRIPT?
---   Usando pgAdmin (interface gráfica):
---   1º Abra o pgAdmin e conecte-se ao seu servidor PostgreSQL.
---   2º Navegue até o banco de dados onde deseja executar o script (collaborator).
---   3º Clique com o botão direito no banco de dados e selecione "Query Tool" (ou "Ferramenta de Consulta").
---   4º Abra o seu script SQL usando o botão "Open File" (Abrir Arquivo) ou copie e cole o conteúdo do script na janela da Query Tool.
---   5º Execute o script clicando no botão "Execute" (Executar) ou pressionando F5.
---**************************************************************************************************************************************
-
--- Inserção de dados na tabela `parameter`
-INSERT INTO parameter (nome, valor) VALUES
-('linguagem_padrao', 'Java'),
-('framework_backend', 'Spring Boot'),
-('framework_frontend', 'React'),
-('banco_dados', 'PostgreSQL'),
-('sistema_operacional', 'Linux'),
-('ambiente_desenvolvimento', 'Docker'),
-('ferramenta_ci_cd', 'Jenkins'),
-('metodologia_agil', 'Scrum'),
-('tempo_maximo_tarefa', '8 horas'),
-('numero_sprints', '4'),
-('duracao_sprint', '2 semanas'),
-('horas_trabalho_dia', '8'),
-('ferias_por_ano', '30 dias'),
-('licenca_medica_por_ano', '15 dias'),
-('notificacoes_email', 'true'),
-('notificacoes_slack', 'true'),
-('tema_aplicacao', 'Escuro'),
-('idioma_aplicacao', 'Português'),
-('politica_senhas', 'Mínimo 8 caracteres, 1 letra maiúscula, 1 número'),
-('vpn_jira', 'vpnJira'),
-('vpn_azure', 'vpnAzure'),
-('vpn_confluence', 'vpnConfluence');
-
--- Inserção de dados na tabela `event_reason`
-INSERT INTO event_reason (nome, descricao, status) VALUES
-('Início de Projeto', 'Evento para marcar o início de um novo projeto.', true),
-('Término de Projeto', 'Evento para marcar o término de um projeto.', true),
-('Férias', 'Evento para registrar o período de férias de um usuário.', true),
-('Licença Médica', 'Evento para registrar o período de licença médica de um usuário.', true),
-('Licença Paternidade/Maternidade', 'Evento para registrar o período de licença paternidade/maternidade de um usuário.', true),
-('Treinamento', 'Evento para registrar a participação de um usuário em um treinamento.', true),
-('Ausência Justificada', 'Evento para registrar uma ausência justificada de um usuário.', true),
-('Ausência Injustificada', 'Evento para registrar uma ausência injustificada de um usuário.', true),
-('Mudança de Equipe', 'Evento para registrar a mudança de equipe de um usuário.', true),
-('Promoção', 'Evento para registrar a promoção de um usuário.', true),
-('Demissão', 'Evento para registrar a demissão de um usuário.', true),
-('Afastamento', 'Evento para registrar o afastamento temporário de um usuário.', true),
-('Retorno de Afastamento', 'Evento para registrar o retorno de um usuário após um afastamento.', true),
-('Mudança de Cargo', 'Evento para registrar a mudança de cargo de um usuário.', true),
-('Participação em Evento', 'Evento para registrar a participação de um usuário em um evento externo.', true),
-('Apresentação de Trabalho', 'Evento para registrar a apresentação de um trabalho por um usuário.', true),
-('Publicação de Artigo', 'Evento para registrar a publicação de um artigo por um usuário.', true),
-('Premiação', 'Evento para registrar a premiação de um usuário.', true),
-('Aconselhamento', 'Evento para registrar um aconselhamento com um usuário.', true);
-
--- Inserção de dados na tabela `role`
-INSERT INTO role (nome, descricao, status) VALUES
-('Desenvolvedor Júnior', 'Desenvolvedor com pouca experiência, geralmente em início de carreira.', true),
-('Desenvolvedor Pleno', 'Desenvolvedor com experiência moderada e capaz de trabalhar de forma mais independente.', true),
-('Desenvolvedor Sênior', 'Desenvolvedor com vasta experiência e capaz de liderar projetos e equipes.', true),
-('Tech Lead', 'Desenvolvedor líder técnico, responsável por decisões técnicas e arquiteturais.', true),
-('Gerente de Projeto', 'Responsável por gerenciar o projeto, incluindo prazos, recursos e comunicação com o cliente.', true),
-('Scrum Master', 'Facilita a aplicação da metodologia Scrum na equipe de desenvolvimento.', true),
-('Product Owner', 'Responsável por definir e priorizar o backlog do produto, representando as necessidades do cliente.', true),
-('Designer UX/UI', 'Responsável pela experiência do usuário e design da interface do produto.', true),
-('Analista de Testes', 'Responsável por garantir a qualidade do produto através de testes manuais e automatizados.', true),
-('DevOps Engineer', 'Responsável pela automação de processos de desenvolvimento e implantação de software.', true),
-('Arquiteto de Software', 'Responsável por definir a arquitetura do sistema e garantir aconsistência técnica.', true),
-('Líder de Equipe', 'Responsável por liderar e coordenar uma equipe de desenvolvimento.', true),
-('Estagiário', 'Estudante em fase de aprendizado, atuando em tarefas sob supervisão.', true);
-
--- Inserção de dados na tabela `alm_tool`
-INSERT INTO alm_tool (nome, url, login, senha, tipo, vpn, status, task_status, closure_status) 
-VALUES 
-  ('GitHub', 'https://github.com/', 'devteam1', 'ghsenha123', 'Controle de Versão e Colaboração', null, true, 'Em Andamento', 'Aberto'),
-  ('Jira', 'https://www.atlassian.com/software/jira', 'devteam1', 'jira456', 'Gerenciamento de Projetos', (SELECT valor FROM parameter WHERE nome = 'vpn_jira'), true, 'Em Andamento', 'Aberto'),
-  ('Azure DevOps', 'https://azure.microsoft.com/pt-br/services/devops/', 'devteam2', 'azsenha789', 'CI/CD e Gerenciamento de Projetos', (SELECT valor FROM parameter WHERE nome = 'vpn_azure'), true, 'Em Andamento', 'Aberto'),
-  ('Slack', 'https://slack.com/', 'equipedev', '', 'Comunicação', null, true, 'Ativo', 'Aberto'),
-  ('Confluence', 'https://www.atlassian.com/software/confluence', 'devteam1', 'confluencia123', 'Documentação e Wiki', (SELECT valor FROM parameter WHERE nome = 'vpn_confluence'), true, 'Ativo', 'Aberto');
-  
--- Inserção de dados na tabela `client`
-INSERT INTO client (nome, contato, email) VALUES
-('Empresa ABC', '(11) 1234-5678', 'contato@empresaabc.com'),
-('Tech Solutions', '(21) 9876-5432', 'contato@techsolutions.com'),
-('InovaWeb', '(31) 3456-7890', 'contato@inovaweb.com.br'),
-('DigitalMinds', '(11) 5555-1212', 'contato@digitalminds.com'),
-('WebDev Pro', '(21) 8888-4444', 'contato@webdevpro.com'),
-('Code Masters', '(41) 2345-6789', 'contato@codemasters.com.br'),
-('StartupX', '(11) 9999-0000', 'contato@startupx.com'),
-('Global Tech', '(81) 7777-3333', 'contato@globaltech.com'),
-('Innovatech', '(19) 6666-2222', 'contato@innovatech.com.br'),
-('Web Wizards', '(27) 5555-8888', 'contato@webwizards.com'),
-('Dev Solutions', '(61) 4444-7777', 'contato@devsolutions.com.br'),
-('Tech Innovators', '(11) 3333-9999', 'contato@techinnovators.com'),
-('Future Tech', '(71) 2222-6666', 'contato@futuretech.com'),
-('Byte Builders', '(51) 1111-5555', 'contato@bytebuilders.com.br'),
-('Pixel Perfect', '(31) 8888-2222', 'contato@pixelperfect.com'),
-('Software Experts', '(11) 7777-4444', 'contato@softwareexperts.com'),
-('Cloud Masters', '(85) 6666-1111', 'contato@cloudmasters.com.br'),
-('Mobile Wizards', '(21) 9999-3333', 'contato@mobilewizards.com'),
-('Data Driven', '(48) 5555-7777', 'contato@datadriven.com.br'),
-('Agile Solutions', '(11) 2222-8888', 'contato@agilesolutions.com');
-
--- Inserir usuários
-INSERT INTO usuario (nome, email, senha, id_event_reason) VALUES
-    ('Ana Silva', 'ana.silva@email.com', 123456, 1),     
-    ('Carlos Santos', 'carlos.santos@email.com', 789012, 2),   
-    ('Maria Souza', 'maria.souza@email.com', 345678, 3),    
-    ('João Pereira', 'joao.pereira@email.com', 901234, 4),   
-    ('Pedro Almeida', 'pedro.almeida@email.com', 567890, 5);  
-
--- Associar roles aos usuários (tabela user_role)
-INSERT INTO user_role (usuario, role) VALUES
-    (1, (SELECT id_role FROM role WHERE nome = 'Desenvolvedor Júnior')),
-    (2, (SELECT id_role FROM role WHERE nome = 'Desenvolvedor Sênior')),
-    (2, (SELECT id_role FROM role WHERE nome = 'Tech Lead')), 
-    (3, (SELECT id_role FROM role WHERE nome = 'Designer UX/UI')),
-    (4, (SELECT id_role FROM role WHERE nome = 'Gerente de Projeto')),
-    (5, (SELECT id_role FROM role WHERE nome = 'Analista de Testes'));
-
--- Inserção de dados na tabela `project`
-INSERT INTO project (nome, descricao, data_inicio, data_fim, status_custo_extra, custo_estimado, custo_real, esforço_estimado, esforço_real, id_client, id_almtool)
+-- Inserir dados na tabela 'alm_tool'
+INSERT INTO alm_tool (nome, url, login, senha, tipo, vpn, status, task_status, closure_status)
 VALUES
-    ('Site Institucional', 'Desenvolvimento do novo site institucional da Empresa ABC', 1672531200, 1675209600, 'Dentro do Orçamento', 50000, 48500, '160 horas', '155 horas', (SELECT id_client FROM client WHERE nome = 'Empresa ABC'), (SELECT id_almtool FROM alm_tool WHERE nome = 'GitHub')),
-    ('E-commerce', 'Implementação de loja virtual para Tech Solutions', 1675209600, 1677628800, 'Acima do Orçamento', 80000, 85200, '200 horas', '210 horas', (SELECT id_client FROM client WHERE nome = 'Tech Solutions'), (SELECT id_almtool FROM alm_tool WHERE nome = 'Azure DevOps')),
-    ('App Mobile', 'Criação de aplicativo mobile para InovaWeb', 1677628800, 1680307200, 'Dentro do Orçamento', 65000, 63800, '180 horas', '175 horas', (SELECT id_client FROM client WHERE nome = 'InovaWeb'), (SELECT id_almtool FROM alm_tool WHERE nome = 'Jira')),
-    ('Sistema de Gestão', 'Desenvolvimento de sistema de gestão para Digital Minds', 1680307200, 1682620800, 'Dentro do Orçamento', 75000, 74000, '220 horas', '218 horas', (SELECT id_client FROM client WHERE nome = 'Digital Minds'), (SELECT id_almtool FROM alm_tool WHERE nome = 'GitHub')),
-    ('Plataforma de EAD', 'Criação de plataforma de ensino a distância para WebDev Pro', 1682620800, 1685302400, 'Acima do Orçamento', 90000, 96300, '250 horas', '265 horas', (SELECT id_client FROM client WHERE nome = 'WebDev Pro'), (SELECT id_almtool FROM alm_tool WHERE nome = 'Azure DevOps'));
+    ('Trello', 'https://trello.com', 'fulano@example.com', '12345', 'Gestão de Projetos', 'VPN A', true, 'Em Progresso', 'Fechado'),
+    ('Jira', 'https://jira.atlassian.com', 'ciclano@example.com', '12345', 'Gestão de Problemas', 'VPN B', true, 'Pendente', 'Aberto'),
+    ('Asana', 'https://asana.com', 'beltrano@example.com', '12345', 'Gestão de Tarefas', 'VPN C', true, 'Concluído', 'Fechado'),
+    ('Confluence', 'https://confluence.atlassian.com', 'ana@example.com', '67890', 'Documentação', 'VPN D', true, 'Em Progresso', 'Fechado'),
+    ('Redmine', 'https://redmine.org', 'bruno@example.com', 'abcdef', 'Gestão de Projetos', 'VPN E', false, 'Pendente', 'Aberto'),
+    ('Monday.com', 'https://monday.com', 'carla@example.com', 'ghijkl', 'Gestão de Trabalho', 'VPN F', true, 'Concluído', 'Fechado'),
+    ('Basecamp', 'https://basecamp.com', 'daniel@example.com', 'mnopqr', 'Gestão de Projetos', 'VPN G', true, 'Em Progresso', 'Fechado'),
+    ('ClickUp', 'https://clickup.com', 'elisa@example.com', 'stuvwx', 'Gestão de Tarefas', 'VPN H', false, 'Pendente', 'Aberto');
 
--- Inserção de dados na tabela `technology`
-INSERT INTO technology (nome, descricao, id_project) VALUES
-    ('Java', 'Linguagem de programação orientada a objetos', (SELECT id_project FROM project WHERE nome = 'Site Institucional')),
-    ('Spring Boot', 'Framework Java para desenvolvimento de aplicações web', (SELECT id_project FROM project WHERE nome = 'Site Institucional')),
-    ('React', 'Biblioteca JavaScript para construção de interfaces de usuário', (SELECT id_project FROM project WHERE nome = 'Site Institucional')),
-    ('HTML', 'Linguagem de marcação para estruturação de conteúdo web', (SELECT id_project FROM project WHERE nome = 'Site Institucional')),
-    ('CSS', 'Linguagem de estilo para formatação visual de páginas web', (SELECT id_project FROM project WHERE nome = 'Site Institucional')),
-    ('JavaScript', 'Linguagem de programação para adicionar interatividade a páginas web', (SELECT id_project FROM project WHERE nome = 'Site Institucional')),
-    ('Vue.js', 'Framework JavaScript para construção de interfaces de usuário', (SELECT id_project FROM project WHERE nome = 'E-commerce')),
-    ('Node.js', 'Ambiente de execução JavaScript para desenvolvimento backend', (SELECT id_project FROM project WHERE nome = 'E-commerce')),
-    ('Express.js', 'Framework web minimalista para Node.js', (SELECT id_project FROM project WHERE nome = 'E-commerce')),
-    ('MongoDB', 'Banco de dados NoSQL orientado a documentos', (SELECT id_project FROM project WHERE nome = 'E-commerce')),
-    ('Angular', 'Framework JavaScript para construção de aplicações web', (SELECT id_project FROM project WHERE nome = 'App Mobile')),
-    ('TypeScript', 'Superset de JavaScript com tipagem estática', (SELECT id_project FROM project WHERE nome = 'App Mobile')),
-    ('Ionic', 'Framework para desenvolvimento de aplicativos híbridos', (SELECT id_project FROM project WHERE nome = 'App Mobile')),
-    ('.NET Core', 'Framework open-source para desenvolvimento de aplicações multiplataforma', (SELECT id_project FROM project WHERE nome = 'Sistema de Gestão')),
-    ('C#', 'Linguagem de programação orientada a objetos da Microsoft', (SELECT id_project FROM project WHERE nome = 'Sistema de Gestão')),
-    ('SQL Server', 'Sistema de gerenciamento de banco de dados relacional da Microsoft', (SELECT id_project FROM project WHERE nome = 'Sistema de Gestão')),
-    ('Python', 'Linguagem de programação interpretada de alto nível', (SELECT id_project FROM project WHERE nome = 'Plataforma de EAD')),
-    ('Django', 'Framework web Python de alto nível', (SELECT id_project FROM project WHERE nome = 'Plataforma de EAD')),
-    ('MySQL', 'Sistema de gerenciamento de banco de dados relacional', (SELECT id_project FROM project WHERE nome = 'Plataforma de EAD'));
+-- Inserir dados na tabela 'event_reason' (Motivos de Ausência do Colaborador)
+INSERT INTO event_reason (nome, descricao, status)
+VALUES
+    ('Férias', 'Período de férias do colaborador', true),
+    ('Licença Médica', 'Colaborador em licença médica', false),
+    ('Home Office', 'Trabalho remoto do colaborador', true),
+    ('Treinamento', 'Participação em treinamento', false),
+    ('Licença Maternidade/Paternidade', 'Colaborador em licença maternidade/paternidade', true),
+    ('Folga Compensatória', 'Folga devido a horas extras', true),
+    ('Consultas Médicas', 'Ausência para consultas médicas', true),
+    ('Mudança de Residência', 'Tempo para mudança de residência', false),
+    ('Participação em Conferência', 'Participação em eventos externos', true),
+    ('Ausência Justificada', 'Ausência com justificativa', false);
 
--- Inserção de dados na tabela `
+-- Inserir dados na tabela 'message' (Mensagens para Colaboradores)
+INSERT INTO message (conteudo, tipo, data_inicio, data_fim)
+VALUES
+    ('Reunião Geral Mensal', 'Comunicado', '2023-01-15', '2023-01-15'),
+    ('Atualização de Políticas de Segurança', 'Informativo', '2023-02-10', '2023-02-10'),
+    ('Lembrete de Avaliação de Desempenho', 'Lembrete', '2023-03-20', '2023-03-20'),
+    ('Anúncio de Novo Projeto', 'Comunicado', '2023-04-05', '2023-04-05'),
+    ('Celebração de Aniversário da Empresa', 'Comemoração', '2023-05-25', '2023-05-25'),
+    ('Mudança no Horário de Expediente', 'Informativo', '2023-06-15', '2023-06-15'),
+    ('Nova Ferramenta de Comunicação', 'Comunicado', '2023-07-10', '2023-07-10'),
+    ('Planejamento Anual', 'Lembrete', '2023-08-01', '2023-08-01'),
+    ('Integração de Novos Colaboradores', 'Comunicado', '2023-09-15', '2023-09-15'),
+    ('Encerramento do Ano Fiscal', 'Informativo', '2023-12-31', '2023-12-31');
+
+-- Inserir dados na tabela 'role' (Funções dos Colaboradores)
+INSERT INTO role (nome, descricao, status)
+VALUES
+    ('Desenvolvedor Junior', 'Desenvolvimento de software básico', true),
+    ('Analista de Sistemas', 'Análise e especificação de requisitos', false),
+    ('Gerente de Projeto', 'Coordenação de equipes e projetos', true),
+    ('Designer UX/UI', 'Design de interfaces de usuário', false),
+    ('Especialista em Segurança da Informação', 'Implementação de políticas de segurança', true),
+    ('Administrador de Banco de Dados', 'Gerenciamento de bancos de dados', true),
+    ('Engenheiro de DevOps', 'Automatização de processos de TI', true),
+    ('Especialista em Rede', 'Manutenção e configuração de redes', false),
+    ('Suporte Técnico', 'Assistência técnica a usuários', true),
+    ('Product Owner', 'Gestão de produto', false);
+
