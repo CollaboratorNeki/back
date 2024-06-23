@@ -39,7 +39,7 @@ VALUES
     ('Encerramento do Ano Fiscal', 'Informativo', '2023-12-31', '2023-12-31');
 
 -- Inserir dados na tabela 'role' (Funções dos Colaboradores)
-INSERT INTO role (nome, descricao, status)
+INSERT INTO "role" (nome, descricao, status)
 VALUES
     ('Desenvolvedor Junior', 'Desenvolvimento de software básico', true),
     ('Analista de Sistemas', 'Análise e especificação de requisitos', false),
