@@ -1,92 +1,26 @@
-
 package com.senac.collaborator.model;
 
-import java.util.List;
-
-import com.senac.collaborator.dto.AlmDTO;
-
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "alm_tool")
 public class ALMTool {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idAlmTool;
 
-	@Column(name = "nome")
 	private String nome;
-
-	@Column(name = "url")
 	private String url;
-
-	@Column(name = "login")
 	private String login;
-
-	@Column(name = "senha")
 	private String senha;
-
-	@Column(name = "tipo")
 	private String tipo;
-
-	@Column(name = "vpn")
-	private String vpn; 
-	
-	@Column(name="status" )
-	private boolean status; 
-	
-	@Column(name="task_status")
-	private String taskStatus; 
-	
-	@Column(name="closure_status")
-	private String closureStatus; 
-
-	@OneToMany
-	(mappedBy ="idTask") //id_task
-	private List<Task> task;
-	
-	@OneToMany
-	(mappedBy ="idProject")// id_project
-	private List<Project> project;
-	
-	public ALMTool() {}
-
-	public ALMTool(Long idAlmTool, String nome, String url, String login, String senha, String tipo, String vpn,
-			boolean status, String taskStatus, String closureStatus, List<Task> task, List<Project> project) {
-		super();
-		this.idAlmTool = idAlmTool;
-		this.nome = nome;
-		this.url = url;
-		this.login = login;
-		this.senha = senha;
-		this.tipo = tipo;
-		this.vpn = vpn;
-		this.status = status;
-		this.taskStatus = taskStatus;
-		this.closureStatus = closureStatus;
-		this.task = task;
-		this.project = project;
-	}
-	
-	public ALMTool(AlmDTO almDto) {
-		this.idAlmTool = almDto.getIdAlmTool();
-		this.nome = almDto.getNome();
-		this.url = almDto.getUrl();
-		this.login = almDto.getLogin();
-		this.senha = almDto.getSenha();
-		this.tipo = almDto.getTipo();
-		this.vpn = almDto.getVpn();
-		this.status = almDto.isStatus();
-		this.taskStatus = almDto.getTaskStatus();
-		this.closureStatus = almDto.getClosureStatus();
-	}
+	private String vpn;
+	private Boolean status;
+	private String taskStatus; // Adicione os campos corretamente
+	private String closureStatus;
 
 	public Long getIdAlmTool() {
 		return idAlmTool;
@@ -144,11 +78,11 @@ public class ALMTool {
 		this.vpn = vpn;
 	}
 
-	public boolean isStatus() {
+	public Boolean getStatus() {
 		return status;
 	}
 
-	public void setStatus(boolean status) {
+	public void setStatus(Boolean status) {
 		this.status = status;
 	}
 
@@ -168,25 +102,5 @@ public class ALMTool {
 		this.closureStatus = closureStatus;
 	}
 
-	public List<Task> getTask() {
-		return task;
-	}
-
-	public void setTask(List<Task> task) {
-		this.task = task;
-	}
-
-	public List<Project> getProject() {
-		return project;
-	}
-
-	public void setProject(List<Project> project) {
-		this.project = project;
-	}
-	
-	
-
-	
-	
+	// Getters and Setters
 }
-

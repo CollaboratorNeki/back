@@ -3,42 +3,15 @@ package com.senac.collaborator.dto;
 public class AlmDTO {
 
 	private Long idAlmTool;
-
 	private String nome;
-
 	private String url;
-
 	private String login;
-
 	private String senha;
-
 	private String tipo;
-
 	private String vpn;
-
-	private boolean status;
-
-	private String taskStatus;
-
+	private Boolean status;
+	private String taskStatus; // Adicione os campos corretamente
 	private String closureStatus;
-
-	public AlmDTO(Long idAlmTool, String nome, String url, String login, String senha, String tipo, String vpn,
-			boolean status, String taskStatus, String closureStatus) {
-		super();
-		this.idAlmTool = idAlmTool;
-		this.nome = nome;
-		this.url = url;
-		this.login = login;
-		this.senha = senha;
-		this.tipo = tipo;
-		this.vpn = vpn;
-		this.status = status;
-		this.taskStatus = taskStatus;
-		this.closureStatus = closureStatus;
-	}
-
-	public AlmDTO() {
-	}
 
 	public Long getIdAlmTool() {
 		return idAlmTool;
@@ -96,11 +69,11 @@ public class AlmDTO {
 		this.vpn = vpn;
 	}
 
-	public boolean isStatus() {
+	public Boolean getStatus() {
 		return status;
 	}
 
-	public void setStatus(boolean status) {
+	public void setStatus(Boolean status) {
 		this.status = status;
 	}
 
@@ -120,4 +93,5 @@ public class AlmDTO {
 		this.closureStatus = closureStatus;
 	}
 
+	// Getters and Setters
 }

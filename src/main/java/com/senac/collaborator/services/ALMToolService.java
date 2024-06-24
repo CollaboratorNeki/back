@@ -1,11 +1,11 @@
 package com.senac.collaborator.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.senac.collaborator.dto.AlmDTO;
 import com.senac.collaborator.model.ALMTool;
@@ -15,107 +15,61 @@ import com.senac.collaborator.repositores.ALMToolRepository;
 public class ALMToolService {
 
 	@Autowired
-	ALMToolRepository repositoryAlm;
+	private ALMToolRepository repository;
 
-	public List<AlmDTO> listarALMTool() {
-		List<ALMTool> listAlm = repositoryAlm.findAll();
-		List<AlmDTO> arrayAlm = new ArrayList<>();
-		for (ALMTool itemAlm : listAlm) {
-			AlmDTO almDto = new AlmDTO();
-			almDto.setIdAlmTool(itemAlm.getIdAlmTool());
-			almDto.setNome(itemAlm.getNome());
-			almDto.setUrl(itemAlm.getUrl());
-			almDto.setLogin(itemAlm.getLogin());
-			almDto.setSenha(itemAlm.getSenha());
-			almDto.setTipo(itemAlm.getTipo());
-			almDto.setVpn(itemAlm.getVpn());
-			almDto.setStatus(itemAlm.isStatus());
-			almDto.setTaskStatus(itemAlm.getTaskStatus());
-			almDto.setClosureStatus(itemAlm.getClosureStatus());
-
-			arrayAlm.add(almDto);
-		}
-		return arrayAlm;
+	public ALMTool saveAlm(AlmDTO dto) {
+		ALMTool almTool = new ALMTool();
+		almTool.setNome(dto.getNome());
+		almTool.setUrl(dto.getUrl());
+		almTool.setLogin(dto.getLogin());
+		almTool.setSenha(dto.getSenha());
+		almTool.setTipo(dto.getTipo());
+		almTool.setVpn(dto.getVpn());
+		almTool.setStatus(dto.getStatus());
+		almTool.setTaskStatus(dto.getTaskStatus()); // Adicione os campos
+		almTool.setClosureStatus(dto.getClosureStatus());
+		return repository.save(almTool);
 	}
 
-	public boolean salvarAlm(AlmDTO almDto) {
-		ALMTool almTool = new ALMTool(almDto);
-		ALMTool almTest = repositoryAlm.save(almTool);
-
-		if (almTest != null) {
-			return true;
-		}
-		return false;
+	public List<AlmDTO> getAllAlms() {
+		return repository.findAll().stream().map(this::convertToDto).collect(Collectors.toList());
 	}
 
-	public boolean deletarAlm(Long idAlm) {
-		if (repositoryAlm.existsById(idAlm)) {
-			repositoryAlm.deleteById(idAlm);
-			return true;
+	public Optional<ALMTool> updateAlm(Long id, AlmDTO dto) {
+		Optional<ALMTool> optionalAlmTool = repository.findById(id);
+		if (optionalAlmTool.isPresent()) {
+			ALMTool almTool = optionalAlmTool.get();
+			almTool.setNome(dto.getNome());
+			almTool.setUrl(dto.getUrl());
+			almTool.setLogin(dto.getLogin());
+			almTool.setSenha(dto.getSenha());
+			almTool.setTipo(dto.getTipo());
+			almTool.setVpn(dto.getVpn());
+			almTool.setStatus(dto.getStatus());
+			almTool.setTaskStatus(dto.getTaskStatus()); // Adicione os campos
+			almTool.setClosureStatus(dto.getClosureStatus());
+			return Optional.of(repository.save(almTool));
+		} else {
+			return Optional.empty();
 		}
-		return false;
-
 	}
 
-	public boolean atualizarAlm(Long idAlm, AlmDTO newAlm) {
-		Optional<ALMTool> optionalAlm = repositoryAlm.findById(idAlm);
-		if (optionalAlm.isPresent()) {
-
-			ALMTool antigoAlm = optionalAlm.get();
-			antigoAlm.setIdAlmTool(idAlm);
-
-			if (newAlm.getNome() != null) {
-				antigoAlm.setNome(newAlm.getNome());
-			}
-			
-			if(newAlm.getIdAlmTool() != null) {
-				antigoAlm.setIdAlmTool(newAlm.getIdAlmTool());
-			}
-			
-			if(newAlm.getLogin() != null) {
-				antigoAlm.setLogin(newAlm.getLogin());
-			}
-			
-			if (newAlm.getUrl() != null) {
-				antigoAlm.setUrl(newAlm.getUrl());
-			}
-			if (newAlm.getSenha() != null) {
-				antigoAlm.setSenha(newAlm.getSenha());
-			}
-			if (newAlm.getTipo() != null) {
-				antigoAlm.setTipo(newAlm.getTipo());
-			}
-			if (newAlm.getVpn() != null) {
-				antigoAlm.setVpn(newAlm.getVpn());
-			}
-			if (newAlm.isStatus() != optionalAlm.get().isStatus()) {
-				antigoAlm.setStatus(newAlm.isStatus());
-			}
-			if (newAlm.getTaskStatus() != null) {
-				antigoAlm.setTaskStatus(newAlm.getTaskStatus());
-			}
-			if (newAlm.getClosureStatus() != null) {
-				antigoAlm.setClosureStatus(newAlm.getClosureStatus());
-			}
-
-			repositoryAlm.save(antigoAlm);
-			return true;
-
-		}
-
-		return false;
-
+	public void deleteAlm(Long id) {
+		repository.deleteById(id);
 	}
 
-//    public Optional<ALMTool> findById(Long id) {
-//        return repository.findById(id);
-//    }
-//
-//    public ALMTool save(ALMTool almTool) {
-//        return repository.save(almTool);
-//    }
-//
-//    public void deleteById(Long id) {
-//        repository.deleteById(id);
-//    }
+	private AlmDTO convertToDto(ALMTool almTool) {
+		AlmDTO dto = new AlmDTO();
+		dto.setIdAlmTool(almTool.getIdAlmTool());
+		dto.setNome(almTool.getNome());
+		dto.setUrl(almTool.getUrl());
+		dto.setLogin(almTool.getLogin());
+		dto.setSenha(almTool.getSenha());
+		dto.setTipo(almTool.getTipo());
+		dto.setVpn(almTool.getVpn());
+		dto.setStatus(almTool.getStatus());
+		dto.setTaskStatus(almTool.getTaskStatus()); // Adicione os campos
+		dto.setClosureStatus(almTool.getClosureStatus());
+		return dto;
+	}
 }
