@@ -1,6 +1,8 @@
 
 package com.senac.collaborator.model;
 
+import com.senac.collaborator.dto.TechnologyDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,20 +12,27 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+
 @Entity
 @Table(name = "technology")
 public class Technology {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idTechnology;
+	private Long idTechnology;
 
 	@Column(name = "nome")
 	private String nome;
 
-	@Column(name = "descricao")
-	private String descricao;
+	@Column(name = "tipo")
+	private String tipo;
+	
+	@Column(name = "versao")
+	private String versao;
 
+	
+	
+	
 	/* conecta com project */
 
 	@ManyToOne
@@ -33,19 +42,31 @@ public class Technology {
 	public Technology() {
 	}
 
-	public Technology(long idTechnology, String nome, String descricao, Project project) {
+	
+	public Technology(TechnologyDTO technologyDTO) {
+		this.idTechnology = technologyDTO.getIdTechnology();
+		this.nome = technologyDTO.getNome();
+		this.tipo = technologyDTO.getTipo();
+		this.versao = technologyDTO.getVersao();
+	
+		
+		
+	}
+	public Technology(Long idTechnology, String nome, String tipo, String versao, Project project) {
 		super();
 		this.idTechnology = idTechnology;
 		this.nome = nome;
-		this.descricao = descricao;
+		this.tipo = tipo;
+		this.versao = versao;
 		this.project = project;
 	}
+	
 
 	public long getIdTechnology() {
 		return idTechnology;
 	}
 
-	public void setIdTechnology(long idTechnology) {
+	public void setIdTechnology(Long idTechnology) {
 		this.idTechnology = idTechnology;
 	}
 
@@ -57,12 +78,20 @@ public class Technology {
 		this.nome = nome;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getVersao() {
+		return versao;
+	}
+
+	public void setVersao(String versao) {
+		this.versao = versao;
 	}
 
 	public Project getProject() {
@@ -73,4 +102,5 @@ public class Technology {
 		this.project = project;
 	}
 
+	
 }

@@ -24,7 +24,7 @@ public class Client {
 	private String nome;
 
 	@Column(name="telefone")
-	private Long telefone;
+	private String telefone;
 
 	@Column(name="email")
 	private String email;
@@ -48,7 +48,11 @@ public class Client {
 
 
 
-	public Client(Long idClient, String nome, Long telefone, String email, String documento, String codigoExterno,
+	
+
+
+
+	public Client(Long idClient, String nome, String telefone, String email, String documento, String codigoExterno,
 			List<Project> project) {
 		super();
 		this.idClient = idClient;
@@ -62,6 +66,10 @@ public class Client {
 
 
 
+
+
+
+
 	public Client(ClientDTO clientDto) {
 		this.nome = clientDto.getNome();
 		this.telefone = clientDto.getTelefone();
@@ -72,9 +80,17 @@ public class Client {
 
 
 
+
+
+
+
 	public Long getIdClient() {
 		return idClient;
 	}
+
+
+
+
 
 
 
@@ -84,9 +100,17 @@ public class Client {
 
 
 
+
+
+
+
 	public String getNome() {
 		return nome;
 	}
+
+
+
+
 
 
 
@@ -96,15 +120,27 @@ public class Client {
 
 
 
-	public Long getTelefone() {
+
+
+
+
+	public String getTelefone() {
 		return telefone;
 	}
 
 
 
-	public void setTelefone(Long telefone) {
+
+
+
+
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+
+
+
+
 
 
 
@@ -114,9 +150,17 @@ public class Client {
 
 
 
+
+
+
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+
+
+
 
 
 
@@ -126,9 +170,17 @@ public class Client {
 
 
 
+
+
+
+
 	public void setDocumento(String documento) {
 		this.documento = documento;
 	}
+
+
+
+
 
 
 
@@ -138,9 +190,17 @@ public class Client {
 
 
 
+
+
+
+
 	public void setCodigoExterno(String codigoExterno) {
 		this.codigoExterno = codigoExterno;
 	}
+
+
+
+
 
 
 
@@ -150,9 +210,14 @@ public class Client {
 
 
 
+
+
+
+
 	public void setProject(List<Project> project) {
 		this.project = project;
 	}
+
 
 
 

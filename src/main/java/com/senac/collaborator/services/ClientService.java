@@ -6,13 +6,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.senac.collaborator.dto.AlmDTO;
 import com.senac.collaborator.dto.ClientDTO;
-import com.senac.collaborator.dto.RoleDTO;
-import com.senac.collaborator.model.ALMTool;
 import com.senac.collaborator.model.Client;
-import com.senac.collaborator.model.Role;
 import com.senac.collaborator.repositores.ClientRepository;
 
 @Service
